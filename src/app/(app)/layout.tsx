@@ -20,8 +20,8 @@ export default function RootLayout({
         <ThemeProvider
           enableSystem={true}
           attribute="class"
-          storageKey='theme'
           disableTransitionOnChange={false}
+          defaultTheme="system"
         >
           {children}
         </ThemeProvider>
