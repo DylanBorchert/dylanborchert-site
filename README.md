@@ -15,3 +15,8 @@ Working on a updated portfolio site
 - https://ui.shadcn.com/
 - https://ui.aceternity.com/
 - https://www.shadergradient.co/
+
+## Dribble Inspo
+
+- https://dribbble.com/shots/24059020-Personal-Porfolio-Site
+- https://dribbble.com/shots/23028304-Vucko-case-study-page
