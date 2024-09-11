@@ -21,3 +21,7 @@ Working on a updated portfolio site
 -   https://dribbble.com/shots/24059020-Personal-Porfolio-Site
 -   https://dribbble.com/shots/23028304-Vucko-case-study-page
 -   https://dribbble.com/shots/17242255-Developer-portfolio-1
+
+## More Inspo
+
+-   https://www.semplice.com/how-to-create-your-about-page

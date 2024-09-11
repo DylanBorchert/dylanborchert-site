@@ -1,7 +1,9 @@
 "use server";
 import Hero from "#/components/custom/Hero";
 import Nav from "#/components/custom/Nav";
+import { Textfit } from "react-textfit";
 import SubHero from "#/components/custom/SubHero";
+import About from "#/components/custom/About";
 
 export default async function Home() {
   return (
@@ -11,7 +13,9 @@ export default async function Home() {
         <Hero />
         <SubHero />
       </section>
-      <section className="w-full"></section>
+      <section className="w-full">
+        <About />
+      </section>
     </main>
   );
 }
