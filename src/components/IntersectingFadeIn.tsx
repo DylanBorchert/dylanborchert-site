@@ -31,15 +31,18 @@ const IntersectingFadeIn: React.FC<Props> = ({
         const observer = new IntersectionObserver(
             (entries) => {
                 const entry = entries[0];
-                if (entry.isIntersecting) {
+                const elementHeight = ref.current?.offsetHeight || 0;
+
+                // Adjust the logic based on height or other conditions
+                if (entry.isIntersecting && entry.intersectionRatio > 0.5) { // 50% visibility based on height
                     setIsVisible(true);
                     observer.disconnect(); // Stop observing this element once it's visible
                     if (onComplete) onComplete(); // Trigger onComplete if provided
                 }
             },
             {
-                rootMargin: '-150px 0px', // Trigger 100px before the element enters the viewport
-                threshold: 0.1,
+                rootMargin: '0px 0px', // Customize margins if needed
+                threshold: [0.1, 0.5], // Trigger at 10% and 50% visibility
             }
         );
 

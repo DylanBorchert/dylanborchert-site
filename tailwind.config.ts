@@ -19,6 +19,8 @@ const config: Config = {
 		extend: {
 			animation: {
 				aurora: "aurora 60s linear infinite",
+				"forward-spin": "forward-spin 0.3s linear 1",
+				"reverse-spin": "reverse-spin 0.3s linear 1",
 			},
 			keyframes: {
 				aurora: {
@@ -28,6 +30,14 @@ const config: Config = {
 					to: {
 						backgroundPosition: "350% 50%, 350% 50%",
 					},
+				},
+				"forward-spin": {
+					"0%": { transform: "rotate(0deg)" },
+					"100%": { transform: "rotate(360deg)" },
+				},
+				"reverse-spin": {
+					"0%": { transform: "rotate(0deg)" },
+					"100%": { transform: "rotate(-360deg)" },
 				},
 			},
 			boxShadow: {

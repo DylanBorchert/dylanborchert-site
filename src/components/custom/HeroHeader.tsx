@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-export default function Nav() {
+export default function HeroHeader() {
     const [time, setTime] = useState("XX:XX");
     const [shufflingTime, setShufflingTime] = useState("XX:XX");
     const [isFirstLoad, setIsFirstLoad] = useState(true); // Flag for first load
@@ -22,7 +22,7 @@ export default function Nav() {
             const [prevHour, prevMinute] = time.split(":");
 
             // Shuffle effect logic
-            if (isFirstLoad) {
+            if (isFirstLoad || (currentMinute === "00" && prevMinute === "59")) {
                 // Shuffle both hours and minutes on the first load
                 let shuffleInterval = setInterval(() => {
                     const randomTime = `${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}:${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}`;
