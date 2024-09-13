@@ -10,14 +10,12 @@ export default function About() {
 
     return (
         <>
-            <Textfit mode='single' forceSingleModeWidth={true} max={10000} min={0} className="w-full font-bold min-h-0 z-20 antialiased text-muted-foreground leading-tight bg-clip-text background-clip-paralax">
+            <Textfit mode='single' forceSingleModeWidth={true} max={10000} min={0} className="w-full font-bold antialiased text-muted-foreground leading-tight bg-clip-text background-clip-paralax">
                 About Me.
             </Textfit>
             <IntersectingFadeIn>
                 <p>Summary</p>
             </IntersectingFadeIn>
-            <div className="h-[100dvh]">
-            </div>
 
         </>
     );
