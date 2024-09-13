@@ -4,7 +4,7 @@ import { AuroraBackground } from "../ui/aurora-background";
 import FadeIn from "../FadeIn";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { FlipWords } from "../ui/flip-words";
 
 export default function Hero() {
@@ -26,6 +26,20 @@ export default function Hero() {
 
     };
 
+    // Fixes the issue with the Textfit component not updating on re-renders
+    const TextFitFlipWordsComponent = memo(function TextFitFlipWordsComponent() {
+        return (
+            <Textfit
+                className={`w-full font-bold antialiased text-background leading-tight max-w-1/2 text-[114px]`}
+                mode='single'
+                forceSingleModeWidth={true}
+                max={10000}
+                min={0}
+            >
+                <FlipWords words={["Developer", "Designer", "Creator"]} duration={2000} className="!text-background !pl-0" />
+            </Textfit>)
+    });
+
 
     return (
         <div className="overflow-hidden relative rounded-2xl h-full">
@@ -38,9 +52,7 @@ export default function Hero() {
                     <Textfit mode='single' forceSingleModeWidth={true} max={10000} min={0} className="w-full font-bold antialiased text-background leading-tight max-w-1/2">
                         I&#39;m Dylan
                     </Textfit>
-                    <Textfit mode='single' forceSingleModeWidth={true} max={10000} min={0} className="w-full font-bold antialiased text-background leading-tight max-w-1/2">
-                        <FlipWords words={["Developer", "Designer", "Creator"]} duration={2000} className="!text-background !pl-0" />
-                    </Textfit>
+                    <TextFitFlipWordsComponent />
 
                 </FadeIn>
             </div>

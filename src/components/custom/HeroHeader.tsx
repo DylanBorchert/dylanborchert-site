@@ -62,13 +62,13 @@ export default function HeroHeader() {
     return (
         <div className="flex justify-between py-3 items-center">
             <div>
-                <p className="flex-nowrap pr-3">
+                <p className="flex-nowrap pr-3 font-semibold">
                     DYLANBORCHERT
                 </p>
             </div>
             <div className="flex flex-wrap w-fit flex-col md:flex-row">
                 <span className="pr-1">ALBERTA, CANADA</span>
-                <span>— <span className="font-mono w-16 animate-[pulse_5s_ease-in-out_infinite]">{shufflingTime}</span></span>
+                <span>— <span className="font-mono w-16 animate-[pulse_5s_ease-in-out_infinite] font-medium">{shufflingTime}</span></span>
             </div>
             <div className="*:mx-1 flex-wrap w-fit flex-col sm:block hidden md:flex-row">
                 <span>ABOUT</span>
@@ -77,7 +77,7 @@ export default function HeroHeader() {
             </div>
             <div className="flex h-fit group/talk cursor-pointer items-center pl-3">
                 <ArrowRight className="h-4 w-4 mr-2 text-muted-foreground group-hover/talk:translate-x-[6px] group-hover/talk:text-foreground group-hover/talk:scale-125 transition duration-200 ease-in" />
-                <p>
+                <p className="font-semibold">
                     LET&#39;S TALK
                 </p>
             </div>
