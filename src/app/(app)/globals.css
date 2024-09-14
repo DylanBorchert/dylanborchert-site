@@ -77,7 +77,7 @@
   box-shadow: inset 0px 0px 1px 1px magenta;
 }
 
-.background-clip-paralax {
+.background-clip-parallax {
   display: inline-block;
   background-image: url('../../../public/bg-white.jpg');
   background-size: cover;
@@ -86,7 +86,7 @@
   color: transparent;
 }
 
-.dark .background-clip-paralax {
+.dark .background-clip-parallax {
   display: inline-block;
   background-image: url('../../../public/bg-dark.jpg');
   background-size: cover;
