@@ -1,11 +1,11 @@
 "use client";
 import { Textfit } from "react-textfit";
 import { AuroraBackground } from "../ui/aurora-background";
-import FadeIn from "../FadeIn";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
 import { memo, useState } from "react";
 import { FlipWords } from "../ui/flip-words";
+import FadeIn from "react-fade-in";
 
 export default function Hero() {
     const { systemTheme, theme, setTheme } = useTheme();

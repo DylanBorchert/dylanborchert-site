@@ -77,20 +77,59 @@
   box-shadow: inset 0px 0px 1px 1px magenta;
 }
 
-.background-clip-parallax {
+.bg-image-parallax {
   display: inline-block;
-  background-image: url('../../../public/bg-white.jpg');
+  background-image: url('../../images/bg-white.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: transparent;
 }
 
-.dark .background-clip-parallax {
+.dark .bg-image-parallax {
   display: inline-block;
-  background-image: url('../../../public/bg-dark.jpg');
+  background-image: url('../../images/bg-dark.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: grey var(--background-color);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 20px;
+  border: 3px solid var(--background-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: white;
 }

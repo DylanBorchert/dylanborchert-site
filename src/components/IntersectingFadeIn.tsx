@@ -34,7 +34,7 @@ const IntersectingFadeIn: React.FC<Props> = ({
                 const elementHeight = ref.current?.offsetHeight || 0;
 
                 // Adjust the logic based on height or other conditions
-                if (entry.isIntersecting && entry.intersectionRatio > 0.5) { // 50% visibility based on height
+                if (entry.isIntersecting) { // 50% visibility based on height
                     setIsVisible(true);
                     observer.disconnect(); // Stop observing this element once it's visible
                     if (onComplete) onComplete(); // Trigger onComplete if provided

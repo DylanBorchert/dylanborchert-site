@@ -5,6 +5,11 @@ const nextConfig = {
 	devIndicators: {
 		appIsrStatus: false,
 	},
+	images: {
+		domains: [
+			"api.microlink.io", // Microlink Image Preview
+		],
+	},
 };
 
 export default withPayload(nextConfig);

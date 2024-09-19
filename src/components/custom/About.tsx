@@ -8,22 +8,24 @@ import IntersectingFadeIn from "../IntersectingFadeIn";
 
 export default function About() {
 
-    return (
-      <>
-        <Textfit
-          mode="single"
-          forceSingleModeWidth={true}
-          max={10000}
-          min={0}
-          className="w-full font-bold antialiased text-muted-foreground leading-tight bg-clip-text background-clip-parallax"
-        >
-          About Me.
-        </Textfit>
-        <IntersectingFadeIn>
-          <p>Summary</p>
-        </IntersectingFadeIn>
-      </>
-    );
+  return (
+    <div id="about">
+      <Textfit
+        mode="single"
+        forceSingleModeWidth={true}
+        max={10000}
+        min={0}
+        className="w-full font-bold antialiased text-muted-foreground leading-tight bg-clip-text bg-image-parallax"
+      >
+        About Me.
+      </Textfit>
+      <IntersectingFadeIn>
+        <div className="flex w-full">
+
+        </div>
+      </IntersectingFadeIn>
+    </div>
+  );
 }
 
 

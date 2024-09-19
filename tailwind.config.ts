@@ -43,6 +43,7 @@ const config: Config = {
 			boxShadow: {
 				"inner-left-right":
 					"inset 0 0 5px 5px hsl(var(--background)), inset 50px 0 25px hsl(var(--background)), inset -50px 0 25px  hsl(var(--background))",
+				"centre-bg": "0px 0px 30px hsl(var(--background))",
 			},
 			borderRadius: {
 				lg: "var(--radius)",
