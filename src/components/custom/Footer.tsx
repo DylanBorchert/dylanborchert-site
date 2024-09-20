@@ -1,12 +1,16 @@
 "use client"
 
+import { EyeIcon, Pen } from "lucide-react"
+import Link from "next/link"
+
+
 
 export default function Footer(props: any) {
 
 
     return (
-        <div className="w-full p-5">
-            <div className="relative z-10">
+        <div className="w-full p-5 flex justify-center">
+            <div className="relative">
                 <div className="h-full flex flex-col justify-center">
                     <div className="font-thin text-xs text-center">
                         <span className="pr-[4px]">
