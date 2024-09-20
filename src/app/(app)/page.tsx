@@ -10,7 +10,7 @@ import Projects from "#/components/custom/Projects";
 
 export default async function Home() {
   return (
-    <main className="mx-auto flex flex-col px-5 max-w-[1280px] relative">
+    <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(4/3))] relative">
       <section className="h-[100dvh] w-full flex flex-col">
         <HeroHeader />
         <Hero />
