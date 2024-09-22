@@ -1,7 +1,5 @@
 "use server";
-import Hero from "#/components/custom/Hero";
-import HeroHeader from "#/components/custom/HeroHeader";
-import HeroFooter from "#/components/custom/HeroFooter";
+import Hero from "#/components/custom/Hero/Hero";
 import About from "#/components/custom/About";
 import Experience from "#/components/custom/Experience";
 import Footer from "#/components/custom/Footer";
@@ -11,11 +9,11 @@ import Projects from "#/components/custom/Projects";
 export default async function Home() {
   return (
     <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(4/3))] relative">
-      <section className="h-[100dvh] w-full flex flex-col">
-        <HeroHeader />
-        <Hero />
-        <HeroFooter />
-      </section>
+      <Hero>
+        <Hero.Header />
+        <Hero.Body />
+        <Hero.Footer />
+      </Hero>
       <section className="h-full dark:bg-dot-white/[0.4] bg-dot-black/[0.4] relative">
         <div className="relative z-10">
           <About />

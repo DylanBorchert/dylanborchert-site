@@ -13,11 +13,14 @@
 		"node": "^18.20.2 || >=20.9.0"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^3.9.0",
 		"@payloadcms/db-mongodb": "3.0.0-beta.97",
 		"@payloadcms/next": "3.0.0-beta.97",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.97",
 		"@payloadcms/richtext-lexical": "3.0.0-beta.97",
+		"@radix-ui/react-dialog": "^1.1.1",
 		"@radix-ui/react-hover-card": "^1.1.1",
+		"@radix-ui/react-label": "^2.1.0",
 		"@radix-ui/react-slot": "^1.1.0",
 		"@react-three/drei": "^9.112.0",
 		"@react-three/fiber": "^8.17.7",
@@ -35,6 +38,7 @@
 		"react": "19.0.0-rc-06d0b89e-20240801",
 		"react-dom": "19.0.0-rc-06d0b89e-20240801",
 		"react-fade-in": "^2.0.1",
+		"react-hook-form": "^7.53.0",
 		"react-spring": "^9.7.4",
 		"react-textfit": "^1.1.1",
 		"react-three": "^0.9.7",
@@ -45,7 +49,8 @@
 		"tailwind-merge": "^2.5.2",
 		"tailwindcss-animate": "^1.0.7",
 		"three": "^0.168.0",
-		"typewriter-effect": "^2.21.0"
+		"typewriter-effect": "^2.21.0",
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@types/json-schema": "^7.0.15",

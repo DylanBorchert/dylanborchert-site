@@ -16,6 +16,7 @@ export interface Config {
     blogs: Blog;
     projects: Project;
     experience: Experience;
+    tags: Tag;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -23,10 +24,7 @@ export interface Config {
     defaultIDType: string;
   };
   globals: {
-    nav: Nav;
-    'home-about': HomeAbout;
-    'home-hero': HomeHero;
-    'home-projects': HomeProject;
+    home: Home;
   };
   locale: null;
   user: User & {
@@ -112,6 +110,29 @@ export interface Project {
  */
 export interface Experience {
   id: string;
+  'Job Title': string;
+  'Comapany Name': string;
+  'Company Link': string;
+  description: string;
+  'Start Date': string;
+  Present: 'yes' | 'no';
+  'End Date?'?: string | null;
+  tags?:
+    | {
+        relationTo: 'tags';
+        value: string | Tag;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: string;
+  name?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -151,36 +172,9 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "nav".
+ * via the `definition` "home".
  */
-export interface Nav {
-  id: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home-about".
- */
-export interface HomeAbout {
-  id: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home-hero".
- */
-export interface HomeHero {
-  id: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "home-projects".
- */
-export interface HomeProject {
+export interface Home {
   id: string;
   updatedAt?: string | null;
   createdAt?: string | null;

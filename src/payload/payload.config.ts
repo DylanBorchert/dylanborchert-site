@@ -8,13 +8,11 @@ import sharp from "sharp";
 
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
-import Nav from "./globals/Nav";
-import Home_About from "./globals/Home.About";
-import Home_Hero from "./globals/Home.Hero";
-import Home_Projects from "./globals/Home.Projects";
 import { Blogs } from "./collections/Blogs";
 import { Projects } from "./collections/Projects";
 import { Experience } from "./collections/Experience";
+import Home from "./globals/Home";
+import { Tags } from "./collections/Tags";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,8 +24,8 @@ export default buildConfig({
 			baseDir: path.resolve(dirname),
 		},
 	},
-	collections: [Users, Media, Blogs, Projects, Experience],
-	globals: [Nav, Home_About, Home_Hero, Home_Projects],
+	collections: [Users, Media, Blogs, Projects, Experience, Tags],
+	globals: [Home],
 	editor: lexicalEditor(),
 	secret: process.env.PAYLOAD_SECRET || "",
 	typescript: {

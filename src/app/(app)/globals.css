@@ -77,9 +77,11 @@
   box-shadow: inset 0px 0px 1px 1px magenta;
 }
 
+
+/* photo from https://basicappleguy.com/basicappleblog/making-waves */
 .bg-image-parallax {
   display: inline-block;
-  background-image: url('../../images/bg-white.jpg');
+  background-image: url('../../../media/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -88,7 +90,7 @@
 
 .dark .bg-image-parallax {
   display: inline-block;
-  background-image: url('../../images/bg-dark.jpg');
+  background-image: url('../../../media/background.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
