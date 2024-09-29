@@ -16,7 +16,7 @@ export default function HeroFooter() {
     return (
         <div className="flex justify-between py-3 items-center">
             <div className="flex h-fit group/talk cursor-pointer items-center sm:w-48 w-28 sm:text-base text-sm" onClick={scrollToContent}>
-                <p className="font-semibold">
+                <p className="font-semibold text-sm">
                     [MORE]
                 </p>
                 <ArrowDown className="h-4 w-4 ml-2 text-muted-foreground group-hover/talk:text-foreground group-hover/talk:scale-125 transition duration-200 ease-in animate-[pulse_10s_ease-in-out_3]" />

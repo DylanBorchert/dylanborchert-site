@@ -15,7 +15,7 @@ export default async function Home() {
         <Hero.Footer />
       </Hero>
       <section className="h-full dark:bg-dot-white/[0.4] bg-dot-black/[0.4] relative">
-        <div className="relative z-10">
+        <div className="z-10 relative">
           <About />
           <Experience />
           <Projects />
