@@ -9,7 +9,75 @@ const Home: GlobalConfig = {
 				{
 					label: "Hero",
 					description: "The hero section of the home page",
-					fields: [],
+					fields: [
+						{
+							type: "group",
+							name: "Images",
+							fields: [
+								{
+									type: "row",
+									fields: [
+										{
+											name: "Hero Image", // required
+											label: "Hero Image name",
+											defaultValue: "general",
+											type: "select", // required
+											hasMany: false,
+											options: [
+												{
+													label: "theme",
+													value: "theme",
+												},
+												{
+													label: "general",
+													value: "general",
+												},
+											],
+										},
+										{
+											type: "relationship",
+											hasMany: false,
+											name: "Dark Mode Image",
+											label: "Dark Mode Image",
+											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) =>
+													siblingData[
+														"Hero Image"
+													] === "theme",
+											},
+										},
+										{
+											type: "relationship",
+											hasMany: false,
+											name: "Light Mode Image",
+											label: "Light Mode Image",
+											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) =>
+													siblingData[
+														"Hero Image"
+													] === "theme",
+											},
+										},
+										{
+											type: "relationship",
+											hasMany: false,
+											name: "General Image",
+											label: "General Image",
+											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) =>
+													siblingData[
+														"Hero Image"
+													] === "general",
+											},
+										},
+									],
+								},
+							],
+						},
+					],
 				},
 				{
 					label: "About Me",
