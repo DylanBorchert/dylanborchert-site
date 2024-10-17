@@ -6,7 +6,18 @@ import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
 import Projects from "#/components/custom/Projects";
 
+import { getPayloadHMR } from '@payloadcms/next/utilities'
+import config from '@payload-config'
+
 export default async function Home() {
+  const payload = await getPayloadHMR({ config });
+
+  const home = await payload.findGlobal({
+    slug: "home",
+  })
+
+  console.log(home);
+
   return (
     <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(4/3))] relative">
       <Hero>

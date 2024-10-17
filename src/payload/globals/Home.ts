@@ -2,6 +2,7 @@ import { GlobalConfig } from "payload";
 
 const Home: GlobalConfig = {
 	slug: "home",
+	label: "home",
 	fields: [
 		{
 			type: "tabs",
@@ -12,16 +13,17 @@ const Home: GlobalConfig = {
 					fields: [
 						{
 							type: "group",
-							name: "Images",
+							name: "Hero",
 							fields: [
 								{
 									type: "row",
 									fields: [
 										{
-											name: "Hero Image", // required
-											label: "Hero Image name",
+											name: "imageMode",
+											label: "Hero Image Mode",
 											defaultValue: "general",
-											type: "select", // required
+											required: true,
+											type: "select",
 											hasMany: false,
 											options: [
 												{
@@ -37,41 +39,26 @@ const Home: GlobalConfig = {
 										{
 											type: "relationship",
 											hasMany: false,
-											name: "Dark Mode Image",
+											name: "darkImage",
+											required: true,
 											label: "Dark Mode Image",
 											relationTo: "media",
-											admin: {
-												condition: (_, siblingData) =>
-													siblingData[
-														"Hero Image"
-													] === "theme",
-											},
 										},
 										{
 											type: "relationship",
 											hasMany: false,
-											name: "Light Mode Image",
+											name: "lightImage",
+											required: true,
 											label: "Light Mode Image",
 											relationTo: "media",
-											admin: {
-												condition: (_, siblingData) =>
-													siblingData[
-														"Hero Image"
-													] === "theme",
-											},
 										},
 										{
 											type: "relationship",
 											hasMany: false,
-											name: "General Image",
+											required: true,
+											name: "generalImage",
 											label: "General Image",
 											relationTo: "media",
-											admin: {
-												condition: (_, siblingData) =>
-													siblingData[
-														"Hero Image"
-													] === "general",
-											},
 										},
 									],
 								},

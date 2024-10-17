@@ -23,6 +23,10 @@ export default buildConfig({
 		importMap: {
 			baseDir: path.resolve(dirname),
 		},
+		livePreview: {
+			globals: ["home"],
+			url: "http://localhost:3000",
+		},
 	},
 	collections: [Users, Media, Blogs, Projects, Experience, Tags],
 	globals: [Home],
@@ -38,4 +42,8 @@ export default buildConfig({
 	plugins: [
 		// storage-adapter-placeholder
 	],
+	graphQL: {
+		disable: false,
+		disablePlaygroundInProduction: false,
+	},
 });

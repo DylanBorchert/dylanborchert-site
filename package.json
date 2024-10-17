@@ -4,6 +4,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
+		"generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload-graphql generate:graphQLSchema",
+		"generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload generate:types",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
@@ -15,6 +17,7 @@
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.0",
 		"@payloadcms/db-mongodb": "3.0.0-beta.97",
+		"@payloadcms/graphql": "3.0.0-beta.97",
 		"@payloadcms/next": "3.0.0-beta.97",
 		"@payloadcms/plugin-cloud": "3.0.0-beta.97",
 		"@payloadcms/richtext-lexical": "3.0.0-beta.97",
@@ -29,6 +32,7 @@
 		"class-variance-authority": "^0.7.0",
 		"classnames": "^2.5.1",
 		"clsx": "^2.1.1",
+		"dotenv": "^16.4.5",
 		"framer-motion": "^11.5.4",
 		"graphql": "^16.8.1",
 		"lucide-react": "^0.439.0",

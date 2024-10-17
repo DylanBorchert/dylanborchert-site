@@ -176,11 +176,11 @@ export interface PayloadMigration {
  */
 export interface Home {
   id: string;
-  Images?: {
-    'Hero Image'?: ('theme' | 'general') | null;
-    'Dark Mode Image'?: (string | null) | Media;
-    'Light Mode Image'?: (string | null) | Media;
-    'General Image'?: (string | null) | Media;
+  Hero: {
+    imageMode: 'theme' | 'general';
+    darkImage: string | Media;
+    lightImage: string | Media;
+    generalImage: string | Media;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
