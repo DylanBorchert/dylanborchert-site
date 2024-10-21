@@ -74,6 +74,7 @@ export interface User {
 export interface Media {
   id: string;
   alt: string;
+  prominentColor?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -176,12 +177,26 @@ export interface PayloadMigration {
  */
 export interface Home {
   id: string;
-  Hero: {
-    imageMode: 'theme' | 'general';
-    darkImage: string | Media;
-    lightImage: string | Media;
-    generalImage: string | Media;
-  };
+  imageMode: 'theme' | 'general';
+  darkImage?: (string | null) | Media;
+  lightImage?: (string | null) | Media;
+  generalImage?: (string | null) | Media;
+  'About Me'?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  experience?: (string | Experience)[] | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

@@ -12,8 +12,11 @@ const Home: GlobalConfig = {
 					description: "The hero section of the home page",
 					fields: [
 						{
-							type: "group",
-							name: "Hero",
+							type: "collapsible",
+							admin: {
+								initCollapsed: true,
+							},
+							label: "Hero Image",
 							fields: [
 								{
 									type: "row",
@@ -43,6 +46,14 @@ const Home: GlobalConfig = {
 											required: true,
 											label: "Dark Mode Image",
 											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) => {
+													return (
+														siblingData.imageMode ===
+														"theme"
+													);
+												},
+											},
 										},
 										{
 											type: "relationship",
@@ -51,6 +62,14 @@ const Home: GlobalConfig = {
 											required: true,
 											label: "Light Mode Image",
 											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) => {
+													return (
+														siblingData.imageMode ===
+														"theme"
+													);
+												},
+											},
 										},
 										{
 											type: "relationship",
@@ -59,6 +78,14 @@ const Home: GlobalConfig = {
 											name: "generalImage",
 											label: "General Image",
 											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) => {
+													return (
+														siblingData.imageMode ===
+														"general"
+													);
+												},
+											},
 										},
 									],
 								},
@@ -69,12 +96,24 @@ const Home: GlobalConfig = {
 				{
 					label: "About Me",
 					description: "The about me section of the home page",
-					fields: [],
+					fields: [
+						{
+							type: "richText",
+							name: "About Me",
+						},
+					],
 				},
 				{
 					label: "Experience",
 					description: "The experience section of the home page",
-					fields: [],
+					fields: [
+						{
+							name: "experience",
+							type: "relationship",
+							relationTo: "experience",
+							hasMany: true,
+						},
+					],
 				},
 				{
 					label: "Projects",

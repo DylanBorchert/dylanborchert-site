@@ -1,6 +1,7 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { resendAdapter } from "@payloadcms/email-resend";
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -27,7 +28,13 @@ export default buildConfig({
 			globals: ["home"],
 			url: "http://localhost:3000",
 		},
+		disable: false,
 	},
+	email: resendAdapter({
+		defaultFromAddress: "dev@dylanborchert.ca",
+		defaultFromName: "Payload CMS",
+		apiKey: process.env.RESEND_API_KEY || "",
+	}),
 	collections: [Users, Media, Blogs, Projects, Experience, Tags],
 	globals: [Home],
 	editor: lexicalEditor(),

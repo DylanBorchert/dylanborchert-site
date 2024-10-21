@@ -6,6 +6,9 @@ export const Experience: CollectionConfig = {
 		singular: "Experience",
 		plural: "Experiences",
 	},
+	admin: {
+		useAsTitle: "Job Title",
+	},
 	fields: [
 		{
 			type: "row", // required

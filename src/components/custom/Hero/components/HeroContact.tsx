@@ -60,6 +60,7 @@ export const HeroContact = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
+        //server function send email with payload cms
         setOpen(false)
         toast({
             title: "Message Sent",
@@ -100,7 +101,7 @@ export const HeroContact = () => {
                                 <FormItem>
                                     <FormLabel>Name</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Your name" {...field} />
+                                        <Input placeholder="Name" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -113,7 +114,7 @@ export const HeroContact = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Your email" {...field} />
+                                        <Input placeholder="Email" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -127,7 +128,7 @@ export const HeroContact = () => {
                                     <FormLabel>Message</FormLabel>
                                     <FormControl>
                                         <Textarea
-                                            placeholder="Your message"
+                                            placeholder="Message"
                                             className="min-h-[80px]"
                                             {...field}
                                         />
