@@ -1,5 +1,4 @@
 "use client";
-import { Textfit } from "react-textfit";
 import { AuroraBackground } from "../../../ui/aurora-background";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
@@ -13,6 +12,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "#/components/ui/tooltip"
+import { AutoTextSize } from "auto-text-size";
 
 
 export default function Hero() {
@@ -37,31 +37,26 @@ export default function Hero() {
     // Fixes the issue with the Textfit component not updating on re-renders
     const TextFitFlipWordsComponent = memo(function TextFitFlipWordsComponent() {
         return (
-            <Textfit
-                className={`w-full font-bold antialiased text-background leading-tight max-w-1/2 text-[114px]`}
-                mode='single'
-                forceSingleModeWidth={true}
-                max={10000}
-                min={0}
+            <AutoTextSize
+                className="font-bold text-background"
+                maxFontSizePx={200}
             >
                 <FlipWords words={["Developer", "Designer", "Creator"]} duration={2000} className="!text-background !pl-0" />
-            </Textfit>)
+            </AutoTextSize>)
     });
-
 
     return (
         <div className="overflow-hidden relative rounded-2xl h-full">
             <AuroraBackground className="w-full h-full absolute top-0"><></></AuroraBackground>
-            <div className="absolute h-full md:w-1/2 w-full p-5">
+            <div className="md:w-1/2 w-full p-5 h-full relative">
                 <FadeIn>
-                    <Textfit mode='single' forceSingleModeWidth={true} max={10000} min={0} className="w-full font-bold antialiased text-background leading-tight max-w-1/2">
+                    <AutoTextSize maxFontSizePx={200} className="font-bold text-background">
                         Hello There.
-                    </Textfit>
-                    <Textfit mode='single' forceSingleModeWidth={true} max={10000} min={0} className="w-full font-bold antialiased text-background leading-tight max-w-1/2">
+                    </AutoTextSize>
+                    <AutoTextSize maxFontSizePx={200} className="font-bold text-background">
                         I&#39;m Dylan
-                    </Textfit>
+                    </AutoTextSize>
                     <TextFitFlipWordsComponent />
-
                 </FadeIn>
             </div>
             <div className="absolute bottom-5 translate-x-[-50%] left-[50%]">

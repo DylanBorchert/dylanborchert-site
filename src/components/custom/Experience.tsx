@@ -1,21 +1,21 @@
 "use client";
 
-import { Textfit } from "react-textfit";
 import IntersectingFadeIn from "../IntersectingFadeIn";
 import { ArrowUpRight } from "lucide-react";
+import { AutoTextSize } from "auto-text-size";
 
 export default function Experience() {
   return (
     <div className="h-fit relative md:flex py-5" id="experience">
-      <Textfit
-        mode="single"
-        forceSingleModeWidth={true}
-        max={10000}
-        min={0}
-        className="max-w-1/2 md:w-1/2 w-full font-bold antialiased text-muted-foreground leading-tight bg-clip-text bg-image-parallax sticky md:top-5 h-fit"
-      >
-        My Experience.
-      </Textfit>
+      <div className="max-w-1/2 md:w-1/2 w-full  sticky md:top-5">
+        <AutoTextSize
+          as="span"
+          maxFontSizePx={1000}
+          className="font-bold antialiased text-muted-foreground bg-clip-text bg-image-parallax"
+        >
+          My Experience.
+        </AutoTextSize>
+      </div>
       <div className="md:w-1/2 w-full md:pl-3 md:pt-0  pt-5 flex flex-col gap-5">
         <IntersectingFadeIn className="group w-full bg-background rounded-lg transition ease-in duration-150 shadow-centre-bg hover:bg-muted dark:border-white/[0.2] border border-black/[0.2] relative">
           <a href="https://www.atvenu.com/" target="_blank" className="block p-5">
