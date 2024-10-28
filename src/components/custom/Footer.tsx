@@ -18,7 +18,7 @@ export default function Footer(props: any) {
                             This site is developed in Next.js with Tailwind CSS and Payload CMS.
                         </p>
                         <span className="pr-[4px]">
-                            © 2024 All rights reserved
+                            {`© ${new Date().getFullYear()} All rights reserved`}
                         </span>
                         <span className="hidden md:inline">
 

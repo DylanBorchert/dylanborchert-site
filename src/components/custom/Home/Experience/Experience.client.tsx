@@ -1,10 +1,11 @@
 "use client";
 
-import IntersectingFadeIn from "../IntersectingFadeIn";
+import IntersectingFadeIn from "../../../IntersectingFadeIn";
 import { ArrowUpRight } from "lucide-react";
 import { AutoTextSize } from "auto-text-size";
 
-export default function Experience() {
+export default function ExperienceClient() {
+
   return (
     <div className="h-fit relative md:flex py-5" id="experience">
       <div className="max-w-1/2 md:w-1/2 w-full  sticky md:top-5">

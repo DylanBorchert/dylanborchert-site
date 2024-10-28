@@ -3,7 +3,7 @@
 import { AutoTextSize } from 'auto-text-size'
 
 import Typewriter from 'typewriter-effect';
-import IntersectingFadeIn from "../IntersectingFadeIn";
+import IntersectingFadeIn from "../../../IntersectingFadeIn";
 import profile from "#/../media/image.jpg"
 import Image from "next/image";
 
@@ -15,6 +15,7 @@ export default function About() {
       <div className='w-full'>
         <AutoTextSize
           as="span"
+
           maxFontSizePx={1000}
           className="font-bold antialiased text-muted-foreground bg-clip-text bg-image-parallax font-center"
         >
@@ -22,15 +23,17 @@ export default function About() {
         </AutoTextSize>
       </div>
       <IntersectingFadeIn className="w-full mb-5 relative">
-        <div className="grid sm:grid-cols-[1fr_4fr] grid-cols-[1fr] grid-rows[1fr] gap-5">
-          <div className="flex flex-col justify-center items-center max-w-72">
-            <div className="aspect-square flex justify-center items-center max-w-[50dvw] p-5">
+        <div className="md:flex gap-10 flex-col md:flex-row grid grid-cols-1 grid-rows-2">
+          <div className='flex justify-center'>
+            <div className="aspect-square max-w-60">
               <Image src={profile} width={400} height={400} alt="profile" className="rounded-full w-full h-full shadow-md" />
             </div>
           </div>
-          <AutoTextSize mode="box" className="w-full h-0" as='div' maxFontSizePx={200}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </AutoTextSize>
+          <div className='w-full'>
+            <AutoTextSize mode="box" className="w-full h-0" as='div' maxFontSizePx={200} minFontSizePx={10}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </AutoTextSize>
+          </div>
         </div>
       </IntersectingFadeIn>
       <IntersectingFadeIn>
@@ -41,7 +44,7 @@ export default function About() {
           <Typewriter
             options={{
               strings: [
-                "Riding my bike with no handlebars.",
+                "Riding my bike with no hands.",
                 "Making a mean cup of coffee.",
                 "Climbing rocks in awkward positions.",
               ],

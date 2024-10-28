@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React from 'react'
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -28,6 +28,7 @@ import {
 import { Input } from "#/components/ui/input"
 import { Textarea } from "#/components/ui/textarea"
 import { Button } from "#/components/ui/button"
+import sendEmail from '#/hooks/send-email';
 
 const formSchema = z.object({
     name: z.string().min(4, {
@@ -45,7 +46,7 @@ const formSchema = z.object({
     }),
 })
 
-export const HeroContact = () => {
+export const HeroContactClient = () => {
     const { toast } = useToast()
     const [open, setOpen] = React.useState(false)
 
@@ -59,13 +60,19 @@ export const HeroContact = () => {
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
         //server function send email with payload cms
+        sendEmail(values).then((res) => {
+            toast({
+                title: "Message Sent",
+                description: "I will get back to you soon.",
+            })
+        }).catch((error) => {
+            toast({
+                title: "Error",
+                description: "An error occurred. Please try again.",
+            })
+        });
         setOpen(false)
-        toast({
-            title: "Message Sent",
-            description: "I will get back to you soon.",
-        })
     }
 
     const handleSheetOpenChange = (isOpen: boolean) => {

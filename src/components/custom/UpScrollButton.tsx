@@ -21,7 +21,7 @@ export default function UpScrollButton() {
     }
 
     useEffect(() => {
-        const isNearTop = window.scrollY < window.outerHeight / 4;
+        const isNearTop = window.scrollY < window.outerHeight / 2;
         if (isNearTop) {
             setShowButton(false);
         } else if (isScrollingUp) {

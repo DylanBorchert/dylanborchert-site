@@ -1,9 +1,9 @@
 "use client";
-import { AuroraBackground } from "../../../ui/aurora-background";
+import { AuroraBackground } from "#/components/ui/aurora-background";
 import classNames from "classnames";
 import { useTheme } from "next-themes";
 import { memo, useState } from "react";
-import { FlipWords } from "../../../ui/flip-words";
+import { FlipWords } from "#/components/ui/flip-words";
 import FadeIn from "react-fade-in";
 
 import {
@@ -60,7 +60,7 @@ export default function Hero() {
                 </FadeIn>
             </div>
             <div className="absolute bottom-5 translate-x-[-50%] left-[50%]">
-                <TooltipProvider>
+                <TooltipProvider delayDuration={150}>
                     <Tooltip>
                         <TooltipTrigger>
                             <svg

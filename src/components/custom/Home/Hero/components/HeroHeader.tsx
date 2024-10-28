@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Contact } from "lucide-react";
-import { HeroContact } from "./HeroContact";
+import { HeroContactClient } from "./HeroContact.client";
 
 export default function HeroHeader() {
     const [time, setTime] = useState("XX:XX");
@@ -82,14 +81,14 @@ export default function HeroHeader() {
                 </p>
             </div>
             <div className="flex flex-wrap w-fit flex-col md:flex-row sm:text-base text-xs">
-                <span className="pr-1">ALBERTA, CANADA</span>
+                <span className="pr-1">CALGARY, ALBERTA</span>
                 <span>— <span className="font-mono w-16 animate-[pulse_5s_ease-in-out_infinite] font-medium">{shufflingTime}</span></span>
             </div>
             <div className="*:mx-1 flex-wrap w-fit flex-col sm:block hidden md:flex-row">
-                <span className="cursor-pointer" onClick={scrollToAbout}>ABOUT</span>
-                <span className="cursor-pointer" onClick={scrollToExperience}>RESUME</span>
+                <span className="cursor-pointer underline" onClick={scrollToAbout}>ABOUT</span>
+                <span className="cursor-pointer underline" onClick={scrollToExperience}>RESUME</span>
             </div>
-            <HeroContact />
+            <HeroContactClient />
         </div>
     );
 }
