@@ -181,22 +181,17 @@ export interface Home {
   darkImage?: (string | null) | Media;
   lightImage?: (string | null) | Media;
   generalImage?: (string | null) | Media;
-  'About Me'?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
+  'About Me': string;
+  'I am pretty good at':
+    | {
         [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  experience?: (string | Experience)[] | null;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  Resume?: (string | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

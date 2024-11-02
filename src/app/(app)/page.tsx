@@ -4,18 +4,10 @@ import About from "#/components/custom/Home/About/About";
 import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
 import Projects from "#/components/custom/Home/Projects/Projects.client";
-
-import { getPayloadHMR } from '@payloadcms/next/utilities'
-import config from '@payload-config'
 import ExperienceServer from "#/components/custom/Home/Experience/Experience.server";
 
 
 export default async function Home() {
-  const payload = await getPayloadHMR({ config });
-
-  const home = await payload.findGlobal({
-    slug: "home",
-  })
 
   return (
     <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(4/3))] relative">

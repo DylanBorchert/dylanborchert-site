@@ -48,12 +48,12 @@ export default function Hero() {
     return (
         <div className="overflow-hidden relative rounded-2xl h-full">
             <AuroraBackground className="w-full h-full absolute top-0"><></></AuroraBackground>
-            <div className="md:w-1/2 w-full p-5 h-full relative">
+            <div className="sm:w-1/2 md:w-1/3 w-full p-5 h-full relative">
                 <FadeIn>
-                    <AutoTextSize maxFontSizePx={200} className="font-bold text-background">
-                        Hello There.
+                    <AutoTextSize maxFontSizePx={1000} className="font-bold text-background">
+                        Hello There!
                     </AutoTextSize>
-                    <AutoTextSize maxFontSizePx={200} className="font-bold text-background">
+                    <AutoTextSize maxFontSizePx={1000} className="font-bold text-background">
                         I&#39;m Dylan
                     </AutoTextSize>
                     <TextFitFlipWordsComponent />

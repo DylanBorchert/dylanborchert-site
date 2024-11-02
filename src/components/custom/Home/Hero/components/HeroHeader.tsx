@@ -76,17 +76,20 @@ export default function HeroHeader() {
     return (
         <div className="flex justify-between py-3 items-center">
             <div>
-                <p className="flex-nowrap pr-3 font-semibold sm:text-base text-sm">
+                <p className="flex-nowrap pr-3 font-semibold sm:text-base">
                     DYLANBORCHERT
                 </p>
             </div>
-            <div className="flex flex-wrap w-fit flex-col md:flex-row sm:text-base text-xs">
-                <span className="pr-1">CALGARY, ALBERTA</span>
-                <span>— <span className="font-mono w-16 animate-[pulse_5s_ease-in-out_infinite] font-medium">{shufflingTime}</span></span>
+            <div className="flex flex-wrap w-fit flex-col md:flex-row sm:text-base text-xs items-center">
+                <span className="text-xs">CALGARY, ALBERTA</span>
+                <div className="flex items-center">
+                    <span className="px-1 pb-[3px]">—</span>
+                    <span className="font-mono w-16 animate-[pulse_5s_ease-in-out_infinite] font-medium text-sm">{shufflingTime}</span>
+                </div>
             </div>
             <div className="*:mx-1 flex-wrap w-fit flex-col sm:block hidden md:flex-row">
-                <span className="cursor-pointer underline" onClick={scrollToAbout}>ABOUT</span>
-                <span className="cursor-pointer underline" onClick={scrollToExperience}>RESUME</span>
+                <span className="cursor-pointer underline text-sm" onClick={scrollToAbout}>ABOUT</span>
+                <span className="cursor-pointer underline text-sm" onClick={scrollToExperience}>RESUME</span>
             </div>
             <HeroContactClient />
         </div>

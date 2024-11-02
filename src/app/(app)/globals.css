@@ -85,23 +85,21 @@
 /* photo from https://basicappleguy.com/basicappleblog/making-waves */
 .bg-image-parallax {
   display: inline-block;
-  background-image: url('../../../media/background.png');
+  background-image: url('../../../media/RanchoTwilight.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: transparent;
-  -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: var(--muted-foreground);
 }
 
 .dark .bg-image-parallax {
   display: inline-block;
-  background-image: url('../../../media/background.png');
+  background-image: url('../../../media/RanchoTwilight.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: transparent;
-  -webkit-text-stroke-width: 3px;
   -webkit-text-stroke-color: var(--muted-foreground);
 }
 

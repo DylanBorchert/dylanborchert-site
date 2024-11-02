@@ -10,6 +10,12 @@ export const Tags: CollectionConfig = {
 			name: "name",
 			label: "name",
 			type: "text",
+			validate: (value) => {
+				if (!value) {
+					return "Name is required.";
+				}
+				return true;
+			},
 			unique: true,
 			index: true,
 			maxLength: 20,

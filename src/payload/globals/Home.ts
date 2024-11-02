@@ -54,6 +54,13 @@ const Home: GlobalConfig = {
 													);
 												},
 											},
+											filterOptions: () => {
+												return {
+													mimeType: {
+														like: "image",
+													},
+												};
+											},
 										},
 										{
 											type: "relationship",
@@ -69,6 +76,13 @@ const Home: GlobalConfig = {
 														"theme"
 													);
 												},
+											},
+											filterOptions: () => {
+												return {
+													mimeType: {
+														like: "image",
+													},
+												};
 											},
 										},
 										{
@@ -86,6 +100,13 @@ const Home: GlobalConfig = {
 													);
 												},
 											},
+											filterOptions: () => {
+												return {
+													mimeType: {
+														like: "image",
+													},
+												};
+											},
 										},
 									],
 								},
@@ -98,8 +119,15 @@ const Home: GlobalConfig = {
 					description: "The about me section of the home page",
 					fields: [
 						{
-							type: "richText",
+							type: "textarea",
 							name: "About Me",
+							required: true,
+						},
+						{
+							type: "json",
+							name: "I am pretty good at",
+							required: true,
+							defaultValue: ["List of things I am good at"],
 						},
 					],
 				},
@@ -108,10 +136,17 @@ const Home: GlobalConfig = {
 					description: "The experience section of the home page",
 					fields: [
 						{
-							name: "experience",
+							name: "Resume",
 							type: "relationship",
-							relationTo: "experience",
-							hasMany: true,
+							relationTo: "media",
+							hasMany: false,
+							filterOptions: () => {
+								return {
+									mimeType: {
+										equals: "application/pdf",
+									},
+								};
+							},
 						},
 					],
 				},

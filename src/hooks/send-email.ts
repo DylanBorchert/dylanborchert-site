@@ -32,9 +32,9 @@ export default async function sendEmail(values: z.infer<typeof formSchema>) {
 	const { email, name, message } = values;
 
 	await payload.sendEmail({
-		to: process.env.SEND_EMAIL,
 		from: process.env.FROM_EMAIL,
-		subject: `Message from ${name} (${email})`,
-		text: message,
+		to: process.env.SEND_EMAIL,
+		subject: `Message from ${name}`,
+		text: `Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`,
 	});
 }

@@ -15,7 +15,6 @@ export default function About() {
       <div className='w-full'>
         <AutoTextSize
           as="span"
-
           maxFontSizePx={1000}
           className="font-bold antialiased text-muted-foreground bg-clip-text bg-image-parallax font-center"
         >
