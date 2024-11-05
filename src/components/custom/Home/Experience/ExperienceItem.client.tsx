@@ -7,7 +7,7 @@ import IntersectingFadeIn from "#/components/IntersectingFadeIn";
 
 export default function ExperienceItem({ item }: { item: Experience }) {
 
-    const tags: Tag[] = item["tags"]?.map((tag: any) => tag.value) || [] as Tag[];
+    const tags: Tag[] = item["tags"]?.map((tag: any) => tag.value).sort((tagA, tagB) => tagA.name.localeCompare(tagB.name)) || [] as Tag[];
 
     return (
         <div className="group w-full rounded-lg transition ease-in duration-150 shadow-centre-bg dark:hover:bg-muted/20 hover:bg-muted/50  relative">

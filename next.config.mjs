@@ -8,6 +8,8 @@ const nextConfig = {
 	images: {
 		domains: [
 			"api.microlink.io", // Microlink Image Preview
+			"localhost", // Localhost
+			"placehold.co", // Placeholder Images
 		],
 	},
 };

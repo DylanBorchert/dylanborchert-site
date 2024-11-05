@@ -181,8 +181,9 @@ export interface Home {
   darkImage?: (string | null) | Media;
   lightImage?: (string | null) | Media;
   generalImage?: (string | null) | Media;
-  'About Me': string;
-  'I am pretty good at':
+  AboutMeText: string;
+  AboutMeImage: string | Media;
+  prettyGoodAt:
     | {
         [k: string]: unknown;
       }

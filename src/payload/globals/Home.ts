@@ -120,12 +120,29 @@ const Home: GlobalConfig = {
 					fields: [
 						{
 							type: "textarea",
-							name: "About Me",
+							name: "AboutMeText",
+							label: "About Me Text",
 							required: true,
 						},
 						{
+							type: "relationship",
+							hasMany: false,
+							name: "AboutMeImage",
+							required: true,
+							label: "About Me Image",
+							relationTo: "media",
+							filterOptions: () => {
+								return {
+									mimeType: {
+										like: "image",
+									},
+								};
+							},
+						},
+						{
 							type: "json",
-							name: "I am pretty good at",
+							name: "prettyGoodAt",
+							label: "I'm Pretty Good At",
 							required: true,
 							defaultValue: ["List of things I am good at"],
 						},

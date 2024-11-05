@@ -1,10 +1,11 @@
 "use server";
 import Hero from "#/components/custom/Home/Hero/Hero";
-import About from "#/components/custom/Home/About/About";
+import About from "#/components/custom/Home/About/About.client";
 import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
 import Projects from "#/components/custom/Home/Projects/Projects.client";
 import ExperienceServer from "#/components/custom/Home/Experience/Experience.server";
+import AboutServer from "#/components/custom/Home/About/About.server";
 
 
 export default async function Home() {
@@ -18,7 +19,7 @@ export default async function Home() {
       </Hero>
       <section className="h-full dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] relative">
         <div className="z-10 relative">
-          <About />
+          <AboutServer />
         </div>
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
       </section>
