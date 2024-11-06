@@ -4,7 +4,7 @@ import HeroFooter from './components/HeroFooter';
 import HeroHeader from './components/HeroHeader';
 import HeroBody from './components/HeroBody';
 
-const Hero = ({ children }) => {
+const Hero = ({ children }: any) => {
     return <div className='relative h-[100dvh] w-full flex flex-col'>{children}</div>;
 };
 

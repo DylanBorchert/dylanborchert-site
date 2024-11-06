@@ -8,7 +8,7 @@ import profile from "#/../media/image.jpg"
 import Image from "next/image";
 import { Home, Media } from '#/payload/payload-types';
 
-export default function About({ home }: Home) {
+export default function About({ home }: any) {
 
   const image = `${process.env.NEXT_PUBLIC_PAYLOAD_URL}${home?.generalImage?.url}`;
   const placeholder = 'https://placehold.co/500x500/';

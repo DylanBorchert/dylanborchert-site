@@ -1,5 +1,5 @@
 // storage-adapter-import-placeholder
-import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { resendAdapter } from "@payloadcms/email-resend";
 import path from "path";
@@ -42,8 +42,12 @@ export default buildConfig({
 	typescript: {
 		outputFile: path.resolve(dirname, "payload-types.ts"),
 	},
-	db: mongooseAdapter({
-		url: process.env.DATABASE_URI || "",
+	db: vercelPostgresAdapter({
+		// Postgres-specific arguments go here.
+		// `pool` is required.
+		pool: {
+			connectionString: process.env.DATABASE_URI,
+		},
 	}),
 	sharp,
 	plugins: [

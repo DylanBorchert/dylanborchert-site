@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: "dylanborchert.ca",
 };
 
+export const dynamic = 'auto';
+
 export default function RootLayout({
   children,
 }: Readonly<{
