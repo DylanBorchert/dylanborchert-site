@@ -2,6 +2,8 @@
 import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { resendAdapter } from "@payloadcms/email-resend";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+
 import path from "path";
 import { buildConfig } from "payload";
 import { fileURLToPath } from "url";
@@ -43,15 +45,18 @@ export default buildConfig({
 		outputFile: path.resolve(dirname, "payload-types.ts"),
 	},
 	db: vercelPostgresAdapter({
-		// Postgres-specific arguments go here.
-		// `pool` is required.
 		pool: {
-			connectionString: process.env.DATABASE_URI,
+			connectionString: process.env.POSTGRES_URL,
 		},
 	}),
 	sharp,
 	plugins: [
-		// storage-adapter-placeholder
+		vercelBlobStorage({
+			collections: {
+				[Media.slug]: true,
+			},
+			token: process.env.BLOB_READ_WRITE_TOKEN || "",
+		}),
 	],
 	graphQL: {
 		disable: false,
