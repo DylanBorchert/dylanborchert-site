@@ -10,7 +10,7 @@ export const Tags: CollectionConfig = {
 			name: "name",
 			label: "name",
 			type: "text",
-			validate: (value) => {
+			validate: (value: any) => {
 				if (!value) {
 					return "Name is required.";
 				}

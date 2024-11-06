@@ -26,7 +26,7 @@ export const Experience: CollectionConfig = {
 				{
 					name: "Company Link", // required
 					type: "text", // required
-					validate: async (val, args) => {
+					validate: async (val: any, args: any) => {
 						if (val && val.match(/^(https):\/\/[^ "]+$/)) {
 							return true;
 						}

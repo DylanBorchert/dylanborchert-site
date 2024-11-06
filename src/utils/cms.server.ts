@@ -16,7 +16,7 @@ export const CMS = {
 	},
 	async getResumeURL() {
 		const home = await this.getHome();
-		const resume = home?.Resume;
+		const resume = home?.Resume as Media;
 		if (!resume || typeof resume === "string") return null;
 		return `${process.env.NEXT_PUBLIC_PAYLOAD_URL}${resume.url}`;
 	},
