@@ -1,4 +1,4 @@
-import path from "path";
+import { headers } from "next/headers";
 import type { CollectionConfig } from "payload";
 import Vibrant from "node-vibrant";
 
@@ -36,6 +36,9 @@ export const Media: CollectionConfig = {
 					result.url &&
 					(operation === "create" || operation === "findByID")
 				) {
+					const host = req.origin?.includes("localhost")
+						? "http://localhost:3000"
+						: req.origin;
 					if (result.mimeType.includes("image")) {
 						//No webp support https://github.com/Vibrant-Colors/node-vibrant/issues/44
 						if (result.mimeType.includes("webp")) {
@@ -45,7 +48,7 @@ export const Media: CollectionConfig = {
 							return;
 						}
 						try {
-							const imagePath = `${process.env.NEXT_PUBLIC_PAYLOAD_URL}${result.url}`;
+							const imagePath = `${host}${result.url}`;
 							const palette =
 								await Vibrant.from(imagePath).getPalette();
 							const vibrantColor =

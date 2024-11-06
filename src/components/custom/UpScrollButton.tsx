@@ -32,7 +32,7 @@ export default function UpScrollButton() {
             }, 5000);
             setTimeoutId(newTimeoutId);
         }
-    }, [isScrollingUp, timeoutId]);
+    }, [isScrollingUp]);
 
     return (
         <div
