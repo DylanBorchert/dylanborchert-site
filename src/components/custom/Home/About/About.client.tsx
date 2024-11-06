@@ -10,9 +10,7 @@ import { Media } from "#/payload/payload-types";
 
 export default function About({ home }: any) {
 
-  const currentUrl = useOrigin()
-
-  const image = home?.generalImage as Media;
+  const image = home?.AboutMeImage as Media;
   const placeholder = 'https://placehold.co/500x500/';
 
   return (
