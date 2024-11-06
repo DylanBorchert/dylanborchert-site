@@ -4,13 +4,14 @@ import { AutoTextSize } from 'auto-text-size'
 
 import Typewriter from 'typewriter-effect';
 import IntersectingFadeIn from "../../../IntersectingFadeIn";
-import profile from "#/../media/image.jpg"
 import Image from "next/image";
-import { Home, Media } from '#/payload/payload-types';
+import useOrigin from '#/hooks/getOrigin';
 
 export default function About({ home }: any) {
 
-  const image = `${process.env.NEXT_PUBLIC_PAYLOAD_URL}${home?.generalImage?.url}`;
+  const currentUrl = useOrigin()
+
+  const image = `${currentUrl}${home?.generalImage?.url}`;
   const placeholder = 'https://placehold.co/500x500/';
 
   return (
