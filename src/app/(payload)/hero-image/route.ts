@@ -15,31 +15,19 @@ export const GET = async (req: NextRequest) => {
 	const headersList = await headers();
 	const isIphone = headersList.get("user-agent")?.includes("iPhone");
 
-	console.log("isAppleWebKit", headersList.get("user-agent"));
+	const data = await payload.findGlobal({
+		slug: "home",
+	});
 
 	if (isIphone) {
-		const iosData = await payload.findGlobal({
-			slug: "home",
-			select: {
-				"IOS Image": {
-					darkImageIOS: true,
-					lightImageIOS: true,
-					generalImageIOS: true,
-					imageModeIOS: true,
-				},
-			},
-		});
+		const iosData = data?.["IOS Image"];
 
-		const darkImageIOS: Media = iosData?.["IOS Image"]
-			?.darkImageIOS as unknown as Media;
-		const lightImageIOS: Media = iosData?.["IOS Image"]
-			?.lightImageIOS as unknown as Media;
-		const generalImageIOS: Media = iosData?.["IOS Image"]
-			?.generalImageIOS as unknown as Media;
+		const darkImageIOS: Media = iosData?.darkImageIOS as unknown as Media;
+		const lightImageIOS: Media = iosData?.lightImageIOS as unknown as Media;
+		const generalImageIOS: Media =
+			iosData?.generalImageIOS as unknown as Media;
 
-		console.log(query, iosData["IOS Image"].imageModeIOS);
-
-		if (iosData["IOS Image"].imageModeIOS === "theme") {
+		if (iosData.imageModeIOS === "theme") {
 			if (query === "dark") {
 				redirect(darkImageIOS.url as string);
 			} else if (query === "light") {
@@ -51,26 +39,13 @@ export const GET = async (req: NextRequest) => {
 			redirect(generalImageIOS.url as string);
 		}
 	} else {
-		const heroData = await payload.findGlobal({
-			slug: "home",
-			select: {
-				"Hero Image": {
-					darkImage: true,
-					lightImage: true,
-					generalImage: true,
-					imageMode: true,
-				},
-			},
-		});
+		const heroData = data?.["Hero Image"];
 
-		const darkImage: Media = heroData?.["Hero Image"]
-			?.darkImage as unknown as Media;
-		const lightImage: Media = heroData?.["Hero Image"]
-			?.lightImage as unknown as Media;
-		const generalImage: Media = heroData?.["Hero Image"]
-			?.generalImage as unknown as Media;
+		const darkImage: Media = heroData?.darkImage as unknown as Media;
+		const lightImage: Media = heroData?.lightImage as unknown as Media;
+		const generalImage: Media = heroData?.generalImage as unknown as Media;
 
-		if (heroData["Hero Image"].imageMode === "theme") {
+		if (heroData.imageMode === "theme") {
 			if (query === "dark") {
 				redirect(darkImage.url as string);
 			} else if (query === "light") {
