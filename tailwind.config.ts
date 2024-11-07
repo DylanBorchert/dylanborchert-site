@@ -40,6 +40,11 @@ const tailwindConfig: Config = {
 					"100%": { transform: "rotate(-360deg)" },
 				},
 			},
+			backgroundImage: {
+				"hero-parallax": "url('/hero-image')",
+				"hero-parallax-dark": "url('/hero-image?theme=dark')",
+				"hero-parallax-light": "url('/hero-image?theme=light')",
+			},
 			boxShadow: {
 				"inner-left-right":
 					"inset 0 0 5px 5px hsl(var(--background)), inset 50px 0 25px hsl(var(--background)), inset -50px 0 25px  hsl(var(--background))",

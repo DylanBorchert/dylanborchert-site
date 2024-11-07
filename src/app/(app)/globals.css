@@ -81,28 +81,6 @@
   box-shadow: inset 0px 0px 1px 1px magenta;
 }
 
-
-/* photo from https://basicappleguy.com/basicappleblog/making-waves */
-.bg-image-parallax {
-  display: inline-block;
-  background-image: url('../../../media/RanchoTwilight.webp');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: transparent;
-  -webkit-text-stroke-color: var(--muted-foreground);
-}
-
-.dark .bg-image-parallax {
-  display: inline-block;
-  background-image: url('../../../media/RanchoTwilight.webp');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: transparent;
-  -webkit-text-stroke-color: var(--muted-foreground);
-}
-
 ::-webkit-scrollbar {
   width: 10px;
 }

@@ -19,7 +19,7 @@ export default function About({ home }: any) {
         <AutoTextSize
           as="span"
           maxFontSizePx={1000}
-          className="font-bold antialiased text-muted-foreground bg-clip-text bg-image-parallax font-center"
+          className="font-bold antialiased text-transparent bg-clip-text font-center bg-hero-parallax-light dark:bg-hero-parallax-dark bg-cover bg-center bg-fixed"
         >
           About Me.
         </AutoTextSize>

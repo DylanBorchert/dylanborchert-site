@@ -30,7 +30,7 @@ export default function ExperienceItem({ item }: { item: Experience }) {
                 </IntersectingFadeIn>
                 <div className="flex flex-wrap my-1 gap-2">
                     {tags.map((tag: any) => (
-                        <div key={tag.id} className="rounded-full w-fit bg-image-parallax p-[2px]">
+                        <div key={tag.id} className="rounded-full w-fit bg-hero-parallax-light dark:bg-hero-parallax-dark bg-cover bg-center bg-fixed p-[2px]">
                             <div className="w-full h-full bg-background rounded-full">
                                 <span className="text-foreground text-sm relative font-extralight w-full px-2">
                                     {tag.name}

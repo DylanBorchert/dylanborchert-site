@@ -22,7 +22,7 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
         <AutoTextSize
           as="span"
           maxFontSizePx={1000}
-          className="font-bold antialiased text-muted-foreground bg-clip-text bg-image-parallax"
+          className="font-bold antialiased bg-clip-text text-transparent bg-hero-parallax-light dark:bg-hero-parallax-dark bg-cover bg-center bg-fixed"
         >
           My Experience.
         </AutoTextSize>
