@@ -15,9 +15,9 @@ export default function ExperienceItem({ item }: { item: Experience }) {
                 <IntersectingFadeIn>
                     <div className="text-muted-foreground flex justify-between items-center text-sm">
                         <div className="gap-1 flex">
-                            <span>{format(new Date(item["Start Date"]), 'MMM yyyy')}</span>
+                            <span>{format(new Date(item.startDate), 'MMM yyyy')}</span>
                             <span>-</span>
-                            {item.Present === 'yes' ? <span>Present</span> : <span>{format(new Date(item["End Date?"] || ''), 'MMM yyyy')}</span>}
+                            {item.Present === 'yes' ? <span>Present</span> : <span>{format(new Date(item.endDate || ''), 'MMM yyyy')}</span>}
                         </div>
                         <ArrowUpRight height={20} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition ease-in-out duration-150" />
                     </div>

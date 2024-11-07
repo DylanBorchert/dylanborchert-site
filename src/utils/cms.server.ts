@@ -27,7 +27,7 @@ export const CMS = {
 			collection: "experience",
 			depth: 1,
 			pagination: false,
-			sort: "-endDate",
+			sort: "-startDate",
 		});
 		return experience.docs;
 	},

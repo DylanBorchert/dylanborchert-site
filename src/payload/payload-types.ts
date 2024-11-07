@@ -134,9 +134,9 @@ export interface Experience {
   'Comapany Name': string;
   'Company Link': string;
   description: string;
-  'Start Date': string;
+  startDate: string;
   Present: 'yes' | 'no';
-  'End Date?'?: string | null;
+  endDate?: string | null;
   tags?:
     | {
         relationTo: 'tags';
@@ -289,9 +289,9 @@ export interface ExperienceSelect<T extends boolean = true> {
   'Comapany Name'?: T;
   'Company Link'?: T;
   description?: T;
-  'Start Date'?: T;
+  startDate?: T;
   Present?: T;
-  'End Date?'?: T;
+  endDate?: T;
   tags?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -343,10 +343,18 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Home {
   id: number;
-  imageMode: 'theme' | 'general';
-  darkImage?: (number | null) | Media;
-  lightImage?: (number | null) | Media;
-  generalImage?: (number | null) | Media;
+  'Hero Image': {
+    imageMode: 'theme' | 'general';
+    darkImage?: (number | null) | Media;
+    lightImage?: (number | null) | Media;
+    generalImage?: (number | null) | Media;
+  };
+  'IOS Image': {
+    imageModeIOS: 'theme' | 'general';
+    darkImageIOS?: (number | null) | Media;
+    lightImageIOS?: (number | null) | Media;
+    generalImageIOS?: (number | null) | Media;
+  };
   AboutMeText: string;
   AboutMeImage: number | Media;
   prettyGoodAt:
@@ -367,10 +375,22 @@ export interface Home {
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
-  imageMode?: T;
-  darkImage?: T;
-  lightImage?: T;
-  generalImage?: T;
+  'Hero Image'?:
+    | T
+    | {
+        imageMode?: T;
+        darkImage?: T;
+        lightImage?: T;
+        generalImage?: T;
+      };
+  'IOS Image'?:
+    | T
+    | {
+        imageModeIOS?: T;
+        darkImageIOS?: T;
+        lightImageIOS?: T;
+        generalImageIOS?: T;
+      };
   AboutMeText?: T;
   AboutMeImage?: T;
   prettyGoodAt?: T;

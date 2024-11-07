@@ -41,7 +41,6 @@ const tailwindConfig: Config = {
 				},
 			},
 			backgroundImage: {
-				"hero-parallax": "url('/hero-image')",
 				"hero-parallax-dark": "url('/hero-image?theme=dark')",
 				"hero-parallax-light": "url('/hero-image?theme=light')",
 			},

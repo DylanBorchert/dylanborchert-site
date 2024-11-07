@@ -19,7 +19,9 @@ const Home: GlobalConfig = {
 							label: "Hero Image",
 							fields: [
 								{
-									type: "row",
+									type: "group",
+									label: "Hero Image",
+									name: "Hero Image",
 									fields: [
 										{
 											name: "imageMode",
@@ -96,6 +98,100 @@ const Home: GlobalConfig = {
 												condition: (_, siblingData) => {
 													return (
 														siblingData.imageMode ===
+														"general"
+													);
+												},
+											},
+											filterOptions: () => {
+												return {
+													mimeType: {
+														like: "image",
+													},
+												};
+											},
+										},
+									],
+								},
+								{
+									type: "group",
+									label: "IOS Image",
+									name: "IOS Image",
+									fields: [
+										{
+											name: "imageModeIOS",
+											label: "Hero Image Mode",
+											defaultValue: "general",
+											required: true,
+											type: "select",
+											hasMany: false,
+											options: [
+												{
+													label: "theme",
+													value: "theme",
+												},
+												{
+													label: "general",
+													value: "general",
+												},
+											],
+										},
+										{
+											type: "relationship",
+											hasMany: false,
+											name: "darkImageIOS",
+											required: true,
+											label: "Dark Mode Image",
+											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) => {
+													return (
+														siblingData.imageModeIOS ===
+														"theme"
+													);
+												},
+											},
+											filterOptions: () => {
+												return {
+													mimeType: {
+														like: "image",
+													},
+												};
+											},
+										},
+										{
+											type: "relationship",
+											hasMany: false,
+											name: "lightImageIOS",
+											required: true,
+											label: "Light Mode Image",
+											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) => {
+													return (
+														siblingData.imageModeIOS ===
+														"theme"
+													);
+												},
+											},
+											filterOptions: () => {
+												return {
+													mimeType: {
+														like: "image",
+													},
+												};
+											},
+										},
+										{
+											type: "relationship",
+											hasMany: false,
+											required: true,
+											name: "generalImageIOS",
+											label: "General Image",
+											relationTo: "media",
+											admin: {
+												condition: (_, siblingData) => {
+													return (
+														siblingData.imageModeIOS ===
 														"general"
 													);
 												},

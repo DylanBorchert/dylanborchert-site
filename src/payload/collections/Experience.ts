@@ -46,7 +46,8 @@ export const Experience: CollectionConfig = {
 			type: "row", // required
 			fields: [
 				{
-					name: "Start Date",
+					name: "startDate",
+					label: "Start Date",
 					type: "date",
 					required: true,
 					admin: {
@@ -76,7 +77,8 @@ export const Experience: CollectionConfig = {
 					],
 				},
 				{
-					name: "End Date?",
+					name: "endDate",
+					label: "End Date?",
 					type: "date",
 					required: true,
 					admin: {
