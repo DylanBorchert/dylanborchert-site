@@ -16,7 +16,6 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
     setExperienceItems(experience);
   }, [experience]);
 
-
   return (
     <div className="h-fit relative md:flex py-5" id="experience">
       <div className="max-w-1/2 md:w-1/2 w-full sticky md:top-5 h-fit">
@@ -37,7 +36,10 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
             <a className="font-bold" href={`${currentUrl}${resumeUrl}`} target="_blank">
               View Full Resume
             </a>
-            <ArrowUpRight height={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition ease-in-out duration-150" />
+            <ArrowUpRight
+              height={20}
+              className="group-hover:translate-x-1 group-hover:-translate-y-1 transition ease-in-out duration-150"
+            />
           </div>
         </IntersectingFadeIn>
       </div>
