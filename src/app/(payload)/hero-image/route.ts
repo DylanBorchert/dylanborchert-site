@@ -3,7 +3,6 @@ import configPromise from "@payload-config";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { getPayload } from "payload";
-import { string } from "zod";
 
 export const GET = async (req: NextRequest) => {
 	const query = req.nextUrl.searchParams.get("theme");
@@ -12,20 +11,33 @@ export const GET = async (req: NextRequest) => {
 
 	const data = await payload.findGlobal({ slug: "home" });
 	const imageConfig = isIphone ? data?.["IOS Image"] : data?.["Hero Image"];
-	const themeKey = isIphone ? "IOS" : "";
-	const darkImage = imageConfig?.[`darkImage${themeKey}`] as Media;
-	const lightImage = imageConfig?.[`lightImage${themeKey}`] as Media;
-	const generalImage = imageConfig?.[`generalImage${themeKey}`] as Media;
 
-	let imageUrl = generalImage.url as string;
+	let imageMode: string | undefined;
+	let darkImage: Media | undefined;
+	let lightImage: Media | undefined;
+	let generalImage: Media | undefined;
 
-	if (imageConfig.imageMode === "theme") {
+	if (isIphone && "imageModeIOS" in imageConfig) {
+		imageMode = imageConfig.imageModeIOS;
+		darkImage = imageConfig.darkImageIOS as Media;
+		lightImage = imageConfig.lightImageIOS as Media;
+		generalImage = imageConfig.generalImageIOS as Media;
+	} else if (!isIphone && "imageMode" in imageConfig) {
+		imageMode = imageConfig.imageMode;
+		darkImage = imageConfig.darkImage as Media;
+		lightImage = imageConfig.lightImage as Media;
+		generalImage = imageConfig.generalImage as Media;
+	}
+
+	let imageUrl = generalImage?.url as string;
+
+	if (imageMode === "theme") {
 		imageUrl =
 			query === "dark"
-				? darkImage.url
+				? darkImage?.url || ""
 				: query === "light"
-					? lightImage.url
-					: generalImage.url;
+					? lightImage?.url || ""
+					: generalImage?.url || "";
 	}
 
 	// Build absolute URL if imageUrl is relative
