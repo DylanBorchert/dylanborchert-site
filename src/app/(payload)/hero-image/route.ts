@@ -1,60 +1,49 @@
 import { Media } from "#/payload/payload-types";
 import configPromise from "@payload-config";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getPayload } from "payload";
+import { string } from "zod";
 
 export const GET = async (req: NextRequest) => {
-	const searchParams = req.nextUrl.searchParams;
-	const query = searchParams.get("theme");
-	const payload = await getPayload({
-		config: configPromise,
-	});
+	const query = req.nextUrl.searchParams.get("theme");
+	const payload = await getPayload({ config: configPromise });
+	const isIphone = (await headers()).get("user-agent")?.includes("iPhone");
 
-	const headersList = await headers();
-	const isIphone = headersList.get("user-agent")?.includes("iPhone");
+	const data = await payload.findGlobal({ slug: "home" });
+	const imageConfig = isIphone ? data?.["IOS Image"] : data?.["Hero Image"];
+	const themeKey = isIphone ? "IOS" : "";
+	const darkImage = imageConfig?.[`darkImage${themeKey}`] as Media;
+	const lightImage = imageConfig?.[`lightImage${themeKey}`] as Media;
+	const generalImage = imageConfig?.[`generalImage${themeKey}`] as Media;
 
-	const data = await payload.findGlobal({
-		slug: "home",
-	});
+	let imageUrl = generalImage.url as string;
 
-	if (isIphone) {
-		const iosData = data?.["IOS Image"];
-
-		const darkImageIOS: Media = iosData?.darkImageIOS as unknown as Media;
-		const lightImageIOS: Media = iosData?.lightImageIOS as unknown as Media;
-		const generalImageIOS: Media =
-			iosData?.generalImageIOS as unknown as Media;
-
-		if (iosData.imageModeIOS === "theme") {
-			if (query === "dark") {
-				redirect(darkImageIOS.url as string);
-			} else if (query === "light") {
-				redirect(lightImageIOS.url as string);
-			} else {
-				redirect(generalImageIOS.url as string);
-			}
-		} else {
-			redirect(generalImageIOS.url as string);
-		}
-	} else {
-		const heroData = data?.["Hero Image"];
-
-		const darkImage: Media = heroData?.darkImage as unknown as Media;
-		const lightImage: Media = heroData?.lightImage as unknown as Media;
-		const generalImage: Media = heroData?.generalImage as unknown as Media;
-
-		if (heroData.imageMode === "theme") {
-			if (query === "dark") {
-				redirect(darkImage.url as string);
-			} else if (query === "light") {
-				redirect(lightImage.url as string);
-			} else {
-				redirect(generalImage.url as string);
-			}
-		} else {
-			redirect(generalImage.url as string);
-		}
+	if (imageConfig.imageMode === "theme") {
+		imageUrl =
+			query === "dark"
+				? darkImage.url
+				: query === "light"
+					? lightImage.url
+					: generalImage.url;
 	}
+
+	// Build absolute URL if imageUrl is relative
+	if (imageUrl.startsWith("/")) {
+		imageUrl = `${req.nextUrl.origin}${imageUrl}`;
+	}
+
+	// Fetch and return the image
+	const imageResponse = await fetch(imageUrl);
+	const contentType =
+		imageResponse.headers.get("Content-Type") || "image/jpeg";
+	const imageBuffer = await imageResponse.arrayBuffer();
+
+	return new NextResponse(imageBuffer, {
+		headers: {
+			"Content-Type": contentType,
+			"Cache-Control":
+				"public, max-age=86400, stale-while-revalidate=43200",
+		},
+	});
 };

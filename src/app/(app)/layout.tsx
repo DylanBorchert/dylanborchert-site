@@ -18,6 +18,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-image?theme=dark"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-image?theme=light"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/hero-image"
+        />
+      </head>
       <body className={SpaceGrotesk.className}>
         <ThemeProvider
           enableSystem={true}
