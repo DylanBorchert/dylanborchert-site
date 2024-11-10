@@ -80,7 +80,7 @@ export default function HeroHeader() {
                     DYLANBORCHERT
                 </p>
             </div>
-            <div className="flex flex-wrap w-fit flex-col md:flex-row sm:text-base text-xs items-center">
+            <div className="flex flex-wrap w-fit flex-col md:flex-row sm:text-base text-xs items-center sm:block hidden">
                 <span className="text-xs">CALGARY, ALBERTA</span>
                 <div className="flex items-center">
                     <span className="px-1 pb-[3px]">—</span>
