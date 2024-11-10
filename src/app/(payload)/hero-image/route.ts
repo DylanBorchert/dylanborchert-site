@@ -54,9 +54,6 @@ export const GET = async (req: NextRequest) => {
 	return new NextResponse(imageBuffer, {
 		headers: {
 			"Content-Type": contentType,
-			"Cache-Control":
-				"public, max-age=86400, stale-while-revalidate=43200",
-			Vary: "User-Agent", // Adds cache differentiation for iPhone vs. web
 		},
 	});
 };
