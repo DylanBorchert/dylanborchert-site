@@ -58,6 +58,7 @@
 		"shadcn": "^2.0.1",
 		"shadergradient": "^1.2.14",
 		"simplex-noise": "^4.0.3",
+		"styled-components": "^6.1.13",
 		"tailwind-merge": "^2.5.2",
 		"tailwindcss-animate": "^1.0.7",
 		"three": "^0.168.0",

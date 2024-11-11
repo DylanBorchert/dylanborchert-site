@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { HeroContactClient } from "./HeroContact.client";
+import { ArrowRight } from "lucide-react";
+import { useContactSheet } from "#/context/ContactSheet.context";
 
 export default function HeroHeader() {
     const [time, setTime] = useState("XX:XX");
     const [shufflingTime, setShufflingTime] = useState("XX:XX");
     const [isFirstLoad, setIsFirstLoad] = useState(true); // Flag for first load
+    const { openSheet } = useContactSheet();
 
     const scrollToAbout = () => {
         const content = document.querySelector("#about");
@@ -91,7 +93,10 @@ export default function HeroHeader() {
                 <span className="cursor-pointer underline text-sm" onClick={scrollToAbout}>ABOUT</span>
                 <span className="cursor-pointer underline text-sm" onClick={scrollToExperience}>RESUME</span>
             </div>
-            <HeroContactClient />
+            <div className="flex justify-end items-center group/talk cursor-pointer pl-3 text-right text-sm py-1" onClick={openSheet}>
+                <ArrowRight className="h-4 w-4 mr-2 text-muted-foreground group-hover/talk:translate-x-[6px] group-hover/talk:text-foreground group-hover/talk:scale-125 transition duration-200 ease-in" />
+                <p className="font-semibold text-nowrap">LET&#39;S TALK</p>
+            </div>
         </div>
     );
 }
