@@ -32,12 +32,13 @@ export const GET = async (req: NextRequest) => {
 	let imageUrl = generalImage?.url as string;
 
 	if (imageMode === "theme") {
-		imageUrl =
-			query === "dark"
-				? darkImage?.url || ""
-				: query === "light"
-					? lightImage?.url || ""
-					: generalImage?.url || "";
+		if (query === "dark") {
+			imageUrl = darkImage?.url || "";
+		} else if (query === "light") {
+			imageUrl = lightImage?.url || "";
+		} else {
+			imageUrl = generalImage?.url || "";
+		}
 	}
 
 	// Build absolute URL if imageUrl is relative

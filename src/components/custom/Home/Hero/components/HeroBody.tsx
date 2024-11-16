@@ -34,16 +34,6 @@ export default function Hero() {
 
     };
 
-    // Fixes the issue with the Textfit component not updating on re-renders
-    const TextFitFlipWordsComponent = memo(function TextFitFlipWordsComponent() {
-        return (
-            <AutoTextSize
-                className="font-bold text-background"
-                maxFontSizePx={200}
-            >
-                <FlipWords words={["Developer", "Designer", "Creator"]} duration={2000} className="!text-background !pl-0" />
-            </AutoTextSize>)
-    });
 
     return (
         <div className="overflow-hidden relative rounded-2xl h-full">
@@ -56,7 +46,6 @@ export default function Hero() {
                     <AutoTextSize maxFontSizePx={1000} className="font-bold text-background">
                         I&#39;m Dylan
                     </AutoTextSize>
-                    <TextFitFlipWordsComponent />
                 </FadeIn>
             </div>
             <div className="absolute bottom-5 translate-x-[-50%] left-[50%]">
@@ -65,7 +54,7 @@ export default function Hero() {
                         <TooltipTrigger>
                             <svg
                                 onClick={toggleTheme}
-                                className={classNames("h-6 w-6 transition duration-150 ease-in-out hover:cursor-pointer fill-background z-20 hover:scale-125",
+                                className={classNames("h-6 w-6 transition duration-150 ease-in-out hover:cursor-pointer fill-background z-20 hover:scale-125 mix-blend-multiply",
                                     { "animate-forward-spin": logoTheme === "forward" },
                                     { "animate-reverse-spin": logoTheme === "back" },
                                     { "": logoTheme === "" }
