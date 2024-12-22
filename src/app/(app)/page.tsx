@@ -3,7 +3,6 @@ import Hero from "#/components/custom/Home/Hero/Hero";
 import About from "#/components/custom/Home/About/About.client";
 import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
-import Projects from "#/components/custom/Home/Projects/Projects.client";
 import ExperienceServer from "#/components/custom/Home/Experience/Experience.server";
 import AboutServer from "#/components/custom/Home/About/About.server";
 import { ContactClient } from "#/components/custom/Contact";
@@ -12,7 +11,6 @@ import { ContactClient } from "#/components/custom/Contact";
 export default async function Home() {
 
   return (
-
     <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(4/3))] relative">
       <Hero>
         <Hero.Header />
@@ -35,6 +33,22 @@ export default async function Home() {
       <Footer />
       <UpScrollButton />
       <ContactClient />
+      {/* This is to preload the images adn is caught by the loader */}
+      <link
+        rel="preload"
+        as="image"
+        href="/hero-image?theme=dark"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/hero-image?theme=light"
+      />
+      <link
+        rel="preload"
+        as="image"
+        href="/hero-image"
+      />
     </main>
   );
 }

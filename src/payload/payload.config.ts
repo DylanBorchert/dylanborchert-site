@@ -28,7 +28,15 @@ export default buildConfig({
 		},
 		livePreview: {
 			globals: ["home"],
-			url: "http://localhost:3000",
+			collections: ["blogs", "projects"],
+			url({ data, collectionConfig }) {
+				const livePreviewUrl =
+					process.env.LIVE_PREVIEW_URL || `http://localhost:3000/`;
+				if (collectionConfig) {
+					return `${livePreviewUrl}${collectionConfig.slug}/${data.slug}`;
+				}
+				return "/";
+			},
 		},
 		disable: false,
 	},

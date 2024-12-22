@@ -112,6 +112,35 @@ export interface Media {
  */
 export interface Blog {
   id: number;
+  title?: string | null;
+  slug?: string | null;
+  tags?: (number | Tag)[] | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  content_html?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tags".
+ */
+export interface Tag {
+  id: number;
+  name?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -121,6 +150,23 @@ export interface Blog {
  */
 export interface Project {
   id: number;
+  title?: string | null;
+  tags?: (number | Tag)[] | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -143,16 +189,6 @@ export interface Experience {
         value: number | Tag;
       }[]
     | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tags".
- */
-export interface Tag {
-  id: number;
-  name?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -269,6 +305,11 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "blogs_select".
  */
 export interface BlogsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  tags?: T;
+  content?: T;
+  content_html?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -277,6 +318,9 @@ export interface BlogsSelect<T extends boolean = true> {
  * via the `definition` "projects_select".
  */
 export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  tags?: T;
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
 }

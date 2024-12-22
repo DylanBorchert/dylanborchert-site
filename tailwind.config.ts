@@ -41,8 +41,10 @@ const tailwindConfig: Config = {
 				},
 			},
 			backgroundImage: {
-				"hero-parallax-dark": "url('/hero-image?theme=dark')",
-				"hero-parallax-light": "url('/hero-image?theme=light')",
+				"hero-parallax-dark":
+					"url('/hero-image?theme=dark'), linear-gradient(#f9f9f9, #f9f9f9)",
+				"hero-parallax-light":
+					"url('/hero-image?theme=light'), linear-gradient(#1a1a1a, #1a1a1a)",
 			},
 			boxShadow: {
 				"inner-left-right":

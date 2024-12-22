@@ -54,7 +54,7 @@ export default function Hero() {
                         <TooltipTrigger>
                             <svg
                                 onClick={toggleTheme}
-                                className={classNames("h-6 w-6 transition duration-150 ease-in-out hover:cursor-pointer fill-background z-20 hover:scale-125 mix-blend-multiply",
+                                className={classNames("h-6 w-6 transition duration-150 ease-in-out hover:cursor-pointer fill-background z-20 hover:scale-125",
                                     { "animate-forward-spin": logoTheme === "forward" },
                                     { "animate-reverse-spin": logoTheme === "back" },
                                     { "": logoTheme === "" }
