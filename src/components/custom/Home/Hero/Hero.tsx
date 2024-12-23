@@ -9,7 +9,7 @@ const Hero = ({ children }: any) => {
 };
 
 Hero.Header = HeroHeader;
-Hero.Body = HeroBody; // Renamed from Hero.Hero to avoid duplication
+Hero.Body = HeroBody;
 Hero.Footer = HeroFooter;
 
 export default Hero;

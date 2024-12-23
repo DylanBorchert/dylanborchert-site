@@ -17,10 +17,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
-
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={SpaceGrotesk.className}>
@@ -30,9 +26,7 @@ export default async function RootLayout({
           disableTransitionOnChange={false}
           defaultTheme="system"
         >
-          <ContactProvider>
-            {children}
-          </ContactProvider>
+          <ContactProvider>{children}</ContactProvider>
           <Toaster />
         </ThemeProvider>
       </body>
