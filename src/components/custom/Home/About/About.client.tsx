@@ -24,10 +24,10 @@ export default function About({ home }: any) {
           About Me.
         </AutoTextSize>
       </div>
-      <IntersectingFadeIn className="w-full mb-5 relative">
-        <div className="md:flex gap-10 flex-col md:flex-row grid grid-cols-1 grid-rows-2">
-          <div className="flex justify-center">
-            <div className="aspect-square max-w-60">
+      <IntersectingFadeIn className="w-full h-fit mb-5 relative">
+        <div className="md:flex gap-5 h-fit">
+          <div className="flex md:flex-col justify-center">
+            <div className="w-52 h-52">
               <Image
                 src={image.url || ""}
                 width={400}
@@ -37,16 +37,16 @@ export default function About({ home }: any) {
               />
             </div>
           </div>
-          <div className="w-full">
-            <AutoTextSize
-              mode="box"
-              className="w-full h-0"
-              as="div"
-              maxFontSizePx={200}
-              minFontSizePx={10}
-            >
-              {home?.AboutMeText}
-            </AutoTextSize>
+          <div className='flex flex-col justify-center'>
+            <div className='h-fit'>
+              <AutoTextSize
+                minFontSizePx={20}
+                maxFontSizePx={40}
+                mode="box"
+              >
+                {home?.AboutMeText}
+              </AutoTextSize>
+            </div>
           </div>
         </div>
       </IntersectingFadeIn>

@@ -24,6 +24,14 @@ export const Blogs: CollectionConfig = {
 			},
 		},
 		{
+			name: "minute_read",
+			label: "Minute Read",
+			type: "number",
+			admin: {
+				readOnly: true,
+			},
+		},
+		{
 			name: "tags",
 			label: "Tags",
 			type: "relationship",
@@ -58,6 +66,16 @@ export const Blogs: CollectionConfig = {
 						strict: true,
 					});
 					data.slug = `${slugBase}`;
+
+					// Convert content_html to minute_read
+					const content = data.content_html.replace(
+						/&[a-zA-Z]+;|<[^>]*>?/gm,
+						" "
+					);
+					console.log(content);
+					const words = content.split(" ");
+					const minute_read = Math.ceil(words.length / 200);
+					data.minute_read = minute_read;
 				}
 			},
 		],

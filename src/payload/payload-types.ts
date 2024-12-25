@@ -114,6 +114,7 @@ export interface Blog {
   id: number;
   title?: string | null;
   slug?: string | null;
+  minute_read?: number | null;
   tags?: (number | Tag)[] | null;
   content: {
     root: {
@@ -307,6 +308,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface BlogsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  minute_read?: T;
   tags?: T;
   content?: T;
   content_html?: T;
