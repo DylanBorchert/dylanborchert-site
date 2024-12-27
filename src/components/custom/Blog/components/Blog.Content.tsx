@@ -6,15 +6,15 @@ import { AutoTextSize } from "auto-text-size";
 
 export default function BlogContent({ blog }: { blog: Blog }) {
     return (
-        <div className="px-5 flex-grow">
-            <div className="lexical">
-                <PayloadLexicalReactRenderer
-                    content={blog.content}
-                    elementRenderers={{
-                        ...defaultElementRenderers,
-                    }}
-                />
-            </div>
+      <div className="px-5 flex-grow">
+        <div className="lexical">
+          <PayloadLexicalReactRenderer
+            content={blog.content}
+            elementRenderers={{
+              ...defaultElementRenderers,
+            }}
+          />
         </div>
-    )
+      </div>
+    );
 }

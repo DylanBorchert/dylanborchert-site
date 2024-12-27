@@ -7,10 +7,8 @@ export default function BlogHeader({ blog }: { blog: Blog }) {
 
 
     return (
-        <div className="w-full p-5 rounded-b-2xl h-fit border-b border-x dark:bg-black bg-white pb-10">
-            <p>
-                {blog.title}
-            </p>
-        </div >
-    )
+      <div className=" w-full bg-hero-parallax-light dark:bg-hero-parallax-dark h-[50dvh] rounded-md my-5 bg-cover bg-center bg-fixed backdrop-blur-xl">
+        <p>{blog.title}</p>
+      </div>
+    );
 }

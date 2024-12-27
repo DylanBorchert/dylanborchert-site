@@ -17,8 +17,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/hero-image?theme=dark" as="image" />
+        <link rel="preload" href="/hero-image?theme=light" as="image" />
+        <link rel="preload" href="/hero-image" as="image" />
+      </head>
       <body className={SpaceGrotesk.className}>
         <ThemeProvider
           enableSystem={true}
