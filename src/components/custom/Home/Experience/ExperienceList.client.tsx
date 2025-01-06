@@ -11,7 +11,6 @@ import { useColorPalette } from "#/context/ColorPalette.context";
 
 export default function ExperienceClient({ experience, resumeUrl }: { experience: any, resumeUrl: string }) {
   const [experienceItems, setExperienceItems] = useState(experience);
-  const { colorPalette } = useColorPalette();
   const currentUrl = useOrigin();
 
   useEffect(() => {
