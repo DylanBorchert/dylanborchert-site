@@ -38,6 +38,8 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
             root.style.setProperty('--palette-lightMuted', data.LightMuted);
             root.style.setProperty('--palette-darkVibrant', data.DarkVibrant);
             root.style.setProperty('--palette-lightVibrant', data.LightVibrant);
+            await fetch(`/hero-image?theme=dark`);
+            await fetch(`/hero-image?theme=light`);
             setReady(true);
         };
         if (displayedTheme !== 'system') {

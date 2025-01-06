@@ -51,7 +51,6 @@ export default function Footer(props: any) {
             <div className="w-4 h-4 rounded-full bg-palette-lightMuted" />
             <div className="w-4 h-4 rounded-full bg-palette-muted" />
             <div className="w-4 h-4 rounded-full bg-palette-darkMuted" />
-            <div className="border h-full"></div>
             <div className="w-4 h-4 rounded-full bg-palette-lightVibrant" />
             <div className="w-4 h-4 rounded-full bg-palette-vibrant" />
             <div className="w-4 h-4 rounded-full bg-palette-darkVibrant" />

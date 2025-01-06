@@ -55,7 +55,7 @@ export const GET = async (req: NextRequest) => {
 	return NextResponse.json(colorPalette, {
 		headers: {
 			ETag: etag,
-			"Cache-Control": "public, max-age=3600, must-revalidate",
+			"Cache-Control": "public, must-revalidate",
 		},
 	});
 };
