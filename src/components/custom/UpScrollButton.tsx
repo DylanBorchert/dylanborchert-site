@@ -32,12 +32,13 @@ export default function UpScrollButton() {
             }, 5000);
             setTimeoutId(newTimeoutId);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isScrollingUp]);
 
     return (
         <div
             className={classNames(
-                "fixed right-5 bottom-5 mix-blend-difference z-50 cursor-pointer transition-opacity duration-500",
+                "fixed right-5 bottom-5 mix-blend-difference z-50 cursor-pointer transition-opacity duration-500 p-2",
                 {
                     "opacity-0 pointer-events-none": !showButton, // Disable clicks when hidden
                     "opacity-100 pointer-events-auto": showButton // Enable clicks when visible

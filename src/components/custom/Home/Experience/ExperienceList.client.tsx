@@ -7,6 +7,7 @@ import ExperienceItem from "./ExperienceItem.client";
 import { ArrowUpRight } from "lucide-react";
 import { Experience } from "#/payload/payload-types";
 import useOrigin from "#/hooks/getOrigin";
+import { useColorPalette } from "#/context/ColorPalette.context";
 
 export default function ExperienceClient({ experience, resumeUrl }: { experience: any, resumeUrl: string }) {
   const [experienceItems, setExperienceItems] = useState(experience);
@@ -22,9 +23,9 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
         <AutoTextSize
           as="span"
           maxFontSizePx={1000}
-          className="font-bold antialiased bg-clip-text text-transparent bg-hero-parallax-light dark:bg-hero-parallax-dark bg-cover bg-center bg-fixed"
+          className={`font-bold antialiased bg-clip-text text-transparent bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed`}
         >
-          My Experience.
+          Experience.
         </AutoTextSize>
       </div>
       <div className="md:w-1/2 w-full md:pl-3 md:pt-0  pt-5 flex flex-col gap-5">
@@ -43,6 +44,6 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
           </div>
         </IntersectingFadeIn>
       </div>
-    </div>
+    </div >
   );
 }
