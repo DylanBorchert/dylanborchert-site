@@ -13,6 +13,7 @@ import {
     TooltipTrigger,
 } from "#/components/ui/tooltip"
 import { AutoTextSize } from "auto-text-size";
+import { useColorPalette } from "#/context/ColorPalette.context";
 
 
 export default function Hero() {
@@ -31,7 +32,6 @@ export default function Hero() {
 
         // Set the logo theme
         setLogoTheme(logoTheme === "back" ? "forward" : "back");
-
     };
 
 
@@ -40,21 +40,21 @@ export default function Hero() {
             <AuroraBackground className="w-full h-full absolute top-0"><></></AuroraBackground>
             <div className="sm:w-1/2 md:w-1/3 w-full p-5 h-full relative max-w-96 sm:max-w-none ">
                 <FadeIn>
-                    <AutoTextSize maxFontSizePx={1000} className="font-bold text-background">
+                    <AutoTextSize maxFontSizePx={1000} className="font-bold text-palette-textForeground">
                         Hello There!
                     </AutoTextSize>
-                    <AutoTextSize maxFontSizePx={1000} className="font-bold text-background">
+                    <AutoTextSize maxFontSizePx={1000} className="font-bold text-palette-textForeground">
                         I&#39;m Dylan
                     </AutoTextSize>
                 </FadeIn>
             </div>
             <div className="absolute bottom-5 translate-x-[-50%] left-[50%]">
-                <TooltipProvider delayDuration={150}>
+                <TooltipProvider delayDuration={100}>
                     <Tooltip>
                         <TooltipTrigger>
                             <svg
                                 onClick={toggleTheme}
-                                className={classNames("h-6 w-6 transition duration-150 ease-in-out hover:cursor-pointer fill-background z-20 hover:scale-125",
+                                className={classNames(`h-6 w-6 transition duration-150 ease-in-out hover:cursor-pointer z-20 hover:scale-125 fill-palette-textForeground`,
                                     { "animate-forward-spin": logoTheme === "forward" },
                                     { "animate-reverse-spin": logoTheme === "back" },
                                     { "": logoTheme === "" }

@@ -7,6 +7,10 @@ export const Media: CollectionConfig = {
 	access: {
 		read: () => true,
 	},
+	admin: {
+		useAsTitle: "alt",
+		defaultColumns: ["file-name", "alt"],
+	},
 	fields: [
 		{
 			type: "row",
@@ -17,9 +21,10 @@ export const Media: CollectionConfig = {
 					required: true,
 				},
 				{
-					name: "prominentColor",
-					type: "text",
+					name: "colorPalette",
+					type: "json",
 					required: false,
+					defaultValue: {},
 					admin: {
 						hidden: true,
 						readOnly: true,
@@ -34,7 +39,9 @@ export const Media: CollectionConfig = {
 			async ({ result, operation, req, args }) => {
 				if (
 					result.url &&
-					(operation === "create" || operation === "findByID")
+					(operation === "create" ||
+						operation === "findByID" ||
+						operation === "update")
 				) {
 					const host = req.origin?.includes("localhost")
 						? "http://localhost:3000"
@@ -51,19 +58,31 @@ export const Media: CollectionConfig = {
 							const imagePath = `${host}${result.url}`;
 							const palette =
 								await Vibrant.from(imagePath).getPalette();
-							const vibrantColor =
-								palette.Vibrant?.hex || "#000000";
+							const [r, g, b] = palette.Vibrant?.rgb;
+							const textForeground =
+								r * 0.299 + g * 0.587 + b * 0.114 > 186
+									? "#000"
+									: "#fff";
+							const colorPalette = {
+								Muted: palette.Muted?.hex,
+								Vibrant: palette.Vibrant?.hex,
+								DarkMuted: palette.DarkMuted?.hex,
+								LightMuted: palette.LightMuted?.hex,
+								DarkVibrant: palette.DarkVibrant?.hex,
+								LightVibrant: palette.LightVibrant?.hex,
+								TextForeground: textForeground,
+							};
 							await req.payload.update({
 								collection: "media",
 								showHiddenFields: true,
 								id: result.id,
 								data: {
-									prominentColor: vibrantColor,
+									colorPalette: colorPalette,
 								},
 							});
 							console.log(
-								"[Media] Vibrant color set to",
-								vibrantColor
+								"[Media] Color Palette Set to: ",
+								colorPalette
 							);
 						} catch (error) {
 							console.error(

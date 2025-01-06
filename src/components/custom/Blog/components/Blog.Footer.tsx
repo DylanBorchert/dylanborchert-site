@@ -7,18 +7,19 @@ export default function BlogFooter({ blog }: { blog: Blog }) {
 
     const formatter = new Intl.DateTimeFormat("en-CA", {
         timeZone: "America/Edmonton", // Calgary timezone
-        month: "short",
+        month: "2-digit",
         year: "2-digit",
         day: "2-digit",
-        hour: "numeric",
+        hour: "2-digit",
         minute: "numeric",
+        timeZoneName: "short",
         hour12: false,
     });
 
     return (
         <div className="">
             <p className="text-right text-muted-foreground px-5 font-mono text-sm">
-                <span>Last updated: </span>{formatter.format(new Date(blog.updatedAt))}
+                {formatter.format(new Date(blog.updatedAt))}
             </p>
             <Footer />
         </div>

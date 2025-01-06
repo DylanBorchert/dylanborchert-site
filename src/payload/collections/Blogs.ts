@@ -8,6 +8,9 @@ import slugify from "slugify";
 
 export const Blogs: CollectionConfig = {
 	slug: "blogs",
+	admin: {
+		useAsTitle: "slug",
+	},
 	fields: [
 		{
 			name: "title",
@@ -72,9 +75,12 @@ export const Blogs: CollectionConfig = {
 						/&[a-zA-Z]+;|<[^>]*>?/gm,
 						" "
 					);
-					console.log(content);
 					const words = content.split(" ");
-					const minute_read = Math.ceil(words.length / 200);
+					console.log("Blog words", words.length);
+					const minute_read =
+						Math.round(
+							(words.length / 200 + Number.EPSILON) * 100
+						) / 100;
 					data.minute_read = minute_read;
 				}
 			},
