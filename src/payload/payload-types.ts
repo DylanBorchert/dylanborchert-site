@@ -93,7 +93,15 @@ export interface User {
 export interface Media {
   id: number;
   alt: string;
-  prominentColor?: string | null;
+  colorPalette?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -114,6 +122,7 @@ export interface Blog {
   id: number;
   title?: string | null;
   slug?: string | null;
+  minute_read?: number | null;
   tags?: (number | Tag)[] | null;
   content: {
     root: {
@@ -287,7 +296,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
-  prominentColor?: T;
+  colorPalette?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -307,6 +316,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface BlogsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  minute_read?: T;
   tags?: T;
   content?: T;
   content_html?: T;

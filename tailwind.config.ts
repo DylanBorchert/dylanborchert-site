@@ -41,10 +41,8 @@ const tailwindConfig: Config = {
 				},
 			},
 			backgroundImage: {
-				"hero-parallax-dark":
-					"url('/hero-image?theme=dark'), linear-gradient(#f9f9f9, #f9f9f9)",
-				"hero-parallax-light":
-					"url('/hero-image?theme=light'), linear-gradient(#1a1a1a, #1a1a1a)",
+				"hero-parallax-dark": "url('/hero-image?theme=dark')",
+				"hero-parallax-light": "url('/hero-image?theme=light')",
 			},
 			boxShadow: {
 				"inner-left-right":
@@ -59,6 +57,15 @@ const tailwindConfig: Config = {
 			colors: {
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
+				palette: {
+					textForeground: "var(--palette-textForeground)",
+					vibrant: "var(--palette-vibrant)",
+					muted: "var(--palette-muted)",
+					darkMuted: "var(--palette-darkMuted)",
+					lightMuted: "var(--palette-lightMuted)",
+					darkVibrant: "var(--palette-darkVibrant)",
+					lightVibrant: "var(--palette-lightVibrant)",
+				},
 				card: {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",

@@ -4,13 +4,14 @@ import { Experience, Tag } from "#/payload/payload-types";
 import { ArrowUpRight } from "lucide-react";
 import { format } from "date-fns";
 import IntersectingFadeIn from "#/components/IntersectingFadeIn";
+import { useColorPalette } from "#/context/ColorPalette.context";
 
 export default function ExperienceItem({ item }: { item: Experience }) {
 
     const tags: Tag[] = item["tags"]?.map((tag: any) => tag.value).sort((tagA, tagB) => tagA.name.localeCompare(tagB.name)) || [] as Tag[];
 
     return (
-        <div className="group w-full rounded-lg transition ease-in duration-150 shadow-centre-bg dark:hover:bg-muted/20 hover:bg-muted/50  relative">
+        <div className="group w-full rounded-lg transition ease-in duration-150 shadow-centre-bg dark:hover:bg-muted-foreground/10 hover:bg-muted-foreground/10  relative">
             <a href={item["Company Link"]} target="_blank" className="block p-5">
                 <IntersectingFadeIn>
                     <div className="text-muted-foreground flex justify-between items-center text-sm">
@@ -30,7 +31,7 @@ export default function ExperienceItem({ item }: { item: Experience }) {
                 </IntersectingFadeIn>
                 <div className="flex flex-wrap my-1 gap-2">
                     {tags.map((tag: any) => (
-                        <div key={tag.id} className="rounded-full w-fit bg-hero-parallax-light dark:bg-hero-parallax-dark bg-cover bg-center bg-fixed p-[2px]">
+                        <div key={tag.id} className={`rounded-full w-fit p-[2px] bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed`}>
                             <div className="w-full h-full bg-background rounded-full">
                                 <span className="text-foreground text-sm relative font-extralight w-full px-2">
                                     {tag.name}

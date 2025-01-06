@@ -108,7 +108,7 @@ export const ContactClient = () => {
                             )}
                         />
                         <SheetFooter>
-                            <Button type="submit">Send Message</Button>
+                            <Button type="submit" className='bg-palette-lightMuted text-palette-darkMuted hover:bg-palette-muted'>Send Message</Button>
                         </SheetFooter>
                     </form>
                 </Form>

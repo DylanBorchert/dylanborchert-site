@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "#/components/ui/toaster";
 import { ContactProvider } from "#/context/ContactSheet.context";
+import { ColorPaletteProvider } from "#/context/ColorPalette.context";
 const SpaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,11 +19,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-
-
-
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/hero-image?theme=dark" as="image" />
+        <link rel="preload" href="/hero-image?theme=light" as="image" />
+        <link rel="preload" href="/hero-image" as="image" />
+      </head>
       <body className={SpaceGrotesk.className}>
         <ThemeProvider
           enableSystem={true}
@@ -30,9 +33,9 @@ export default async function RootLayout({
           disableTransitionOnChange={false}
           defaultTheme="system"
         >
-          <ContactProvider>
-            {children}
-          </ContactProvider>
+          <ColorPaletteProvider>
+            <ContactProvider>{children}</ContactProvider>
+          </ColorPaletteProvider>
           <Toaster />
         </ThemeProvider>
       </body>

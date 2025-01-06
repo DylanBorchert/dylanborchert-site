@@ -5,11 +5,11 @@ import HeroHeader from './components/HeroHeader';
 import HeroBody from './components/HeroBody';
 
 const Hero = ({ children }: any) => {
-    return <div className='relative h-[100dvh] w-full flex flex-col'>{children}</div>;
+    return <div className='relative h-[100dvh] w-full flex flex-col md:max-h-[calc(100dvw*3/4)]'>{children}</div>;
 };
 
 Hero.Header = HeroHeader;
-Hero.Body = HeroBody; // Renamed from Hero.Hero to avoid duplication
+Hero.Body = HeroBody;
 Hero.Footer = HeroFooter;
 
 export default Hero;

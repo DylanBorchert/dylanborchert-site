@@ -8,6 +8,9 @@ import slugify from "slugify";
 
 export const Blogs: CollectionConfig = {
 	slug: "blogs",
+	admin: {
+		useAsTitle: "slug",
+	},
 	fields: [
 		{
 			name: "title",
@@ -19,6 +22,14 @@ export const Blogs: CollectionConfig = {
 			label: "Slug",
 			type: "text",
 			unique: true,
+			admin: {
+				readOnly: true,
+			},
+		},
+		{
+			name: "minute_read",
+			label: "Minute Read",
+			type: "number",
 			admin: {
 				readOnly: true,
 			},
@@ -58,6 +69,19 @@ export const Blogs: CollectionConfig = {
 						strict: true,
 					});
 					data.slug = `${slugBase}`;
+
+					// Convert content_html to minute_read
+					const content = data.content_html.replace(
+						/&[a-zA-Z]+;|<[^>]*>?/gm,
+						" "
+					);
+					const words = content.split(" ");
+					console.log("Blog words", words.length);
+					const minute_read =
+						Math.round(
+							(words.length / 200 + Number.EPSILON) * 100
+						) / 100;
+					data.minute_read = minute_read;
 				}
 			},
 		],

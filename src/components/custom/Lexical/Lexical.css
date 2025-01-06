@@ -1,0 +1,162 @@
+/* 
+==========================================================================
+    lexical Styles 
+==========================================================================
+*/
+
+.lexical li {
+    display: list-item;
+}
+
+.lexical ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+.lexical ol ol {
+    list-style-type: lower-latin;
+}
+
+.lexical blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+    border-left: 2px solid #ccc;
+    opacity: 0.7;
+}
+
+.lexical ul {
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+.lexical {
+    white-space: 'pre-wrap';
+}
+
+.lexical h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.lexical h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.lexical h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.lexical h4 {
+    display: block;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.lexical h5 {
+    display: block;
+    font-size: .83em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.lexical h6 {
+    display: block;
+    font-size: .67em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
+.lexical .table-container {
+    height: 400px;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.lexical img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lexical table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.lexical th,
+.lexical td {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.lexical a:link {
+    color: (internal value);
+    text-decoration: underline;
+    cursor: auto;
+}
+
+.lexical a:hover {
+    color: (internal value);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.lexical a:visited {
+    color: (internal value);
+    text-decoration: underline;
+    cursor: auto;
+}
+
+.lexical a:link:active {
+    color: (internal value);
+}
+
+.lexical a:visited:active {
+    color: (internal value);
+}
+
+.lexical p {
+    margin: 0;
+    font-size: 1em;
+    margin-bottom: 1em;
+}

@@ -33,22 +33,6 @@ export default async function Home() {
       <Footer />
       <UpScrollButton />
       <ContactClient />
-      {/* This is to preload the images adn is caught by the loader */}
-      <link
-        rel="preload"
-        as="image"
-        href="/hero-image?theme=dark"
-      />
-      <link
-        rel="preload"
-        as="image"
-        href="/hero-image?theme=light"
-      />
-      <link
-        rel="preload"
-        as="image"
-        href="/hero-image"
-      />
     </main>
   );
 }

@@ -29,6 +29,11 @@
     "@types/json-schema" "^7.0.15"
     js-yaml "^4.1.0"
 
+"@atelier-disko/payload-lexical-react-renderer@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@atelier-disko/payload-lexical-react-renderer/-/payload-lexical-react-renderer-1.1.0.tgz#8bd2427c3c0e75b91fd8b22a6427b0be539d26ee"
+  integrity sha512-iFzLUuvMbJ8F7tzAjJoPpzFmNY9yNmDOC3NRYTrFVglzt+gCIFwMQgVa+ALLe8fLr3RAYtFpZBpvaNjn6CtlEA==
+
 "@aws-crypto/crc32@5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@aws-crypto/crc32/-/crc32-5.2.0.tgz#cfcc22570949c98c6689cfcbd2d693d36cdae2e1"
