@@ -29,7 +29,6 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
         const fetchColorPalette = async () => {
             const root = document.querySelector(':root') as HTMLElement;
             const response = await fetch(`/color-palette?theme=${displayedTheme}`);
-            await fetch(`/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`);
             const data = await response.json();
             root.style.setProperty('--palette-textForeground', data.TextForeground);
             root.style.setProperty('--palette-vibrant', data.Vibrant);
@@ -38,6 +37,7 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
             root.style.setProperty('--palette-lightMuted', data.LightMuted);
             root.style.setProperty('--palette-darkVibrant', data.DarkVibrant);
             root.style.setProperty('--palette-lightVibrant', data.LightVibrant);
+            await fetch(`/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`);
             await fetch(`/hero-image?theme=dark`);
             await fetch(`/hero-image?theme=light`);
             setReady(true);

@@ -20,7 +20,7 @@ export default function About({ home }: any) {
         <AutoTextSize
           as="span"
           maxFontSizePx={1000}
-          className={`font-bold antialiased text-transparent bg-clip-text font-center bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed`}
+          className="font-bold antialiased text-transparent bg-clip-text font-center bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed"
         >
           About Me.
         </AutoTextSize>

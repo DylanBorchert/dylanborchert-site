@@ -19,7 +19,7 @@ export default function BlogFooter({ blog }: { blog: Blog }) {
     return (
         <div className="">
             <p className="text-right text-muted-foreground px-5 font-mono text-sm">
-                {formatter.format(new Date(blog.updatedAt))}
+                {`Amended ${formatter.format(new Date(blog.updatedAt))}`}
             </p>
             <Footer />
         </div>
