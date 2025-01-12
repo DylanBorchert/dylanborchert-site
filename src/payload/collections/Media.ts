@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import type { CollectionConfig } from "payload";
-import Vibrant from "node-vibrant";
+import { Vibrant } from "node-vibrant/node";
 
 export const Media: CollectionConfig = {
 	slug: "media",
@@ -82,7 +82,7 @@ export const Media: CollectionConfig = {
 							});
 							console.log(
 								"[Media] Color Palette Set to: ",
-								colorPalette
+								palette
 							);
 						} catch (error) {
 							console.error(

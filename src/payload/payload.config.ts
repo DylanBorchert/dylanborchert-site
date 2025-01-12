@@ -1,8 +1,8 @@
 // storage-adapter-import-placeholder
-import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { resendAdapter } from "@payloadcms/email-resend";
-import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { s3Storage } from "@payloadcms/storage-s3";
+import { postgresAdapter } from "@payloadcms/db-postgres";
 
 import path from "path";
 import { buildConfig } from "payload";
@@ -21,55 +21,65 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-  admin: {
-    user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
-    livePreview: {
-      globals: ["home"],
-      collections: ["blogs", "projects"],
-      url({ data, collectionConfig }) {
-        const livePreviewUrl =
-          process.env.LIVE_PREVIEW_URL || `http://localhost:3000/`;
-        if (collectionConfig) {
-          return `${livePreviewUrl}${collectionConfig.slug}/${data.slug}`;
-        }
-        return "/";
-      },
-    },
-    disable: false,
-  },
-  email: resendAdapter({
-    defaultFromAddress: "dev@dylanborchert.ca",
-    defaultFromName: "Payload CMS",
-    apiKey: process.env.RESEND_API_KEY || "",
-  }),
-  collections: [Users, Media, Blogs, Projects, Experience, Tags],
-  globals: [Home],
-  editor: lexicalEditor({
-    features: ({ defaultFeatures, rootFeatures }) => [...defaultFeatures],
-  }),
-  secret: process.env.PAYLOAD_SECRET || "",
-  typescript: {
-    outputFile: path.resolve(dirname, "payload-types.ts"),
-  },
-  db: vercelPostgresAdapter({
-    pool: {
-      connectionString: process.env.POSTGRES_URL,
-    },
-  }),
-  sharp,
-  plugins: [
-    vercelBlobStorage({
-      collections: {
-        [Media.slug]: true,
-      },
-      token: process.env.BLOB_READ_WRITE_TOKEN || "",
-    }),
-  ],
-  graphQL: {
-    disable: false,
-    disablePlaygroundInProduction: false,
-  },
+	admin: {
+		user: Users.slug,
+		importMap: {
+			baseDir: path.resolve(dirname),
+		},
+		livePreview: {
+			globals: ["home"],
+			collections: ["blogs", "projects"],
+			url({ data, collectionConfig }) {
+				const livePreviewUrl =
+					process.env.LIVE_PREVIEW_URL || `http://localhost:3000/`;
+				if (collectionConfig) {
+					return `${livePreviewUrl}${collectionConfig.slug}/${data.slug}`;
+				}
+				return "/";
+			},
+		},
+		disable: false,
+	},
+	email: resendAdapter({
+		defaultFromAddress: "dev@dylanborchert.ca",
+		defaultFromName: "Payload CMS",
+		apiKey: process.env.RESEND_API_KEY || "",
+	}),
+	collections: [Users, Media, Blogs, Projects, Experience, Tags],
+	globals: [Home],
+	editor: lexicalEditor({
+		features: ({ defaultFeatures, rootFeatures }) => [...defaultFeatures],
+	}),
+	secret: process.env.PAYLOAD_SECRET || "",
+	typescript: {
+		outputFile: path.resolve(dirname, "payload-types.ts"),
+	},
+	db: postgresAdapter({
+		pool: {
+			connectionString: process.env.POSTGRES_URL,
+		},
+	}),
+	sharp,
+	plugins: [
+		s3Storage({
+			collections: {
+				media: true,
+			},
+			enabled: true,
+			bucket: process.env.MINIO_BUCKET || "",
+			config: {
+				endpoint: process.env.MINIO_ENDPOINT || "",
+				credentials: {
+					accessKeyId: process.env.MINIO_ACCESS_KEY_ID || "",
+					secretAccessKey: process.env.MINIO_SECRET_ACCESS_KEY || "",
+				},
+				forcePathStyle: true,
+				region: process.env.MINIO_REGION,
+			},
+		}),
+	],
+	graphQL: {
+		disable: false,
+		disablePlaygroundInProduction: false,
+	},
 });
