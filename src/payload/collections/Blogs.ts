@@ -61,7 +61,7 @@ export const Blogs: CollectionConfig = {
 	],
 	hooks: {
 		beforeChange: [
-			async ({ data, operation }) => {
+			async ({ operation, req, data }) => {
 				if (operation === "create" || operation === "update") {
 					// Generate a slugified UUID from the title
 					const slugBase = slugify(data.title || "", {
@@ -69,19 +69,26 @@ export const Blogs: CollectionConfig = {
 						strict: true,
 					});
 					data.slug = `${slugBase}`;
-
-					// Convert content_html to minute_read
-					const content = data.content_html.replace(
-						/&[a-zA-Z]+;|<[^>]*>?/gm,
-						" "
-					);
-					const words = content.split(" ");
-					console.log("Blog words", words.length);
-					const minute_read =
-						Math.round(
-							(words.length / 200 + Number.EPSILON) * 100
-						) / 100;
-					data.minute_read = minute_read;
+				}
+			},
+		],
+		afterChange: [
+			async ({ operation, doc }) => {
+				if (operation === "create" || operation === "update") {
+					if (doc?.content_html) {
+						// Convert content_html to minute_read
+						const content = doc?.content_html?.replace(
+							/&[a-zA-Z]+;|<[^>]*>?/gm,
+							" "
+						);
+						const words = content.split(" ");
+						console.log("Blog words", words.length);
+						const minute_read =
+							Math.round(
+								(words.length / 200 + Number.EPSILON) * 100
+							) / 100;
+						doc.minute_read = minute_read;
+					}
 				}
 			},
 		],
