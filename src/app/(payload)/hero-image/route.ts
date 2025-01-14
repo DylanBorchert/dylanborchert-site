@@ -53,7 +53,7 @@ export const GET = async (req: NextRequest) => {
 	const imageBuffer = await imageResponse.arrayBuffer();
 
 	// Generate an ETag based on the content
-	const etag = `"${Buffer.from(imageBuffer).toString("base64").slice(0, 8)}"`;
+	const etag = `"${Buffer.from(JSON.stringify(imageBuffer)).toString("base64").slice(0, 32)}"`;
 
 	// Check if the client has the latest version of the resource
 	const clientETag = req.headers.get("If-None-Match");
