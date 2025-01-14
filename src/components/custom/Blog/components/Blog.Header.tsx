@@ -20,7 +20,7 @@ export default function BlogHeader({ blog }: { blog: Blog }) {
           {blog.title}
         </AutoTextSize>
       </FadeIn>
-      <FadeIn className="w-full debug py-3 flex justify-between">
+      <FadeIn className="w-full py-3 flex justify-between">
         <span className="text-center text-palette-lightMuted">{`${blog.minute_read && blog.minute_read < 1 ? "< 1" : Math.ceil(blog.minute_read ?? 0)} min read`}</span>
       </FadeIn>
     </div>

@@ -12,7 +12,7 @@ export default function Footer(props: any) {
       <div className="w-full flex flex-col justify-between h-full">
         <div className="flex justify-between items-center">
           <p className="font-semibold">My Portfolio.</p>
-          <span className="text-xs">designed, developed, and hosted by me</span>
+          <span className="text-xs">developed, and hosted by me</span>
         </div>
         <div className="flex justify-between">
           <div className="flex gap-3 items-center">

@@ -18,6 +18,11 @@ export const Blogs: CollectionConfig = {
 			type: "text",
 		},
 		{
+			name: "description",
+			label: "Description",
+			type: "text",
+		},
+		{
 			name: "slug",
 			label: "Slug",
 			type: "text",
