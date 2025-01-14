@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { getPayloadHMR } from "@payloadcms/next/utilities";
+import { getPayload } from "payload";
 import config from "@payload-config";
 
 const formSchema = z.object({
@@ -27,7 +27,7 @@ const formSchema = z.object({
 });
 
 export default async function sendEmail(values: z.infer<typeof formSchema>) {
-	const payload = await getPayloadHMR({ config });
+	const payload = await getPayload({ config });
 
 	const { email, name, message } = values;
 

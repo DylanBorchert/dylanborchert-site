@@ -1,5 +1,5 @@
 'use server'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
+
 import { notFound } from 'next/navigation'
 import config from '@payload-config'
 import {
@@ -14,6 +14,7 @@ import { ContactClient } from "#/components/custom/Contact";
 import "#/components/custom/Lexical/Lexical.css";
 import Blog from "#/components/custom/Blog/Blog";
 import { AutoTextSize } from 'auto-text-size';
+import { getPayload } from 'payload';
 
 export default async function Page({
   params,
@@ -21,7 +22,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug[0];
-  const payload = await getPayloadHMR({ config });
+  const payload = await getPayload({ config });
 
   const result = await payload.find({
     collection: "blogs",
