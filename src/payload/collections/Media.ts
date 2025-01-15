@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import type { CollectionConfig } from "payload";
 import { Vibrant } from "node-vibrant/node";
 
@@ -58,7 +57,19 @@ export const Media: CollectionConfig = {
 							const imagePath = `${host}${result.url}`;
 							const palette =
 								await Vibrant.from(imagePath).getPalette();
-							const [r, g, b] = palette.Vibrant?.rgb || [0, 0, 0];
+							const [r, g, b] = Object.values(palette).reduce(
+								(acc, curr) => {
+									if (!curr) return acc;
+									return curr.population > acc[1]
+										? [
+												curr.rgb[0],
+												curr.rgb[1],
+												curr.rgb[2],
+											]
+										: acc;
+								},
+								[0, 0, 0]
+							) as [number, number, number];
 							const textForeground =
 								r * 0.299 + g * 0.587 + b * 0.114 > 186
 									? "#000"
@@ -81,8 +92,8 @@ export const Media: CollectionConfig = {
 								},
 							});
 							console.log(
-								"[Media] Color Palette Set to: ",
-								palette
+								"[Media] Color Palette Set",
+								colorPalette
 							);
 						} catch (error) {
 							console.error(
