@@ -57,30 +57,32 @@ export const Media: CollectionConfig = {
 							const imagePath = `${host}${result.url}`;
 							const palette =
 								await Vibrant.from(imagePath).getPalette();
-							const [r, g, b] = Object.values(palette).reduce(
-								(acc, curr) => {
-									if (!curr) return acc;
-									return curr.population > acc[1]
-										? [
-												curr.rgb[0],
-												curr.rgb[1],
-												curr.rgb[2],
-											]
-										: acc;
-								},
-								[0, 0, 0]
-							) as [number, number, number];
+							const prominentColor = Object.values(
+								palette
+							).reduce((acc, curr) => {
+								if (!curr) return acc;
+								if (!acc) return curr;
+								return curr.population > acc.population
+									? curr
+									: acc;
+							}, null);
+							if (!prominentColor) {
+								console.log(
+									"[Media] No prominent color found, skipping vibrant color"
+								);
+								return;
+							}
+							const prominentLightness =
+								prominentColor.hsl[2] * 100;
 							const textForeground =
-								r * 0.299 + g * 0.587 + b * 0.114 > 186
-									? "#000"
-									: "#fff";
+								prominentLightness < 50 ? [0, 0, 0] : [0, 0, 1];
 							const colorPalette = {
-								Muted: palette.Muted?.hex,
-								Vibrant: palette.Vibrant?.hex,
-								DarkMuted: palette.DarkMuted?.hex,
-								LightMuted: palette.LightMuted?.hex,
-								DarkVibrant: palette.DarkVibrant?.hex,
-								LightVibrant: palette.LightVibrant?.hex,
+								Muted: palette.Muted?.hsl,
+								Vibrant: palette.Vibrant?.hsl,
+								DarkMuted: palette.DarkMuted?.hsl,
+								LightMuted: palette.LightMuted?.hsl,
+								DarkVibrant: palette.DarkVibrant?.hsl,
+								LightVibrant: palette.LightVibrant?.hsl,
 								TextForeground: textForeground,
 							};
 							await req.payload.update({

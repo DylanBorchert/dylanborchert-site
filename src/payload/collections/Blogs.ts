@@ -11,6 +11,11 @@ export const Blogs: CollectionConfig = {
 	admin: {
 		useAsTitle: "slug",
 	},
+	versions: {
+		drafts: {
+			autosave: true,
+		},
+	},
 	fields: [
 		{
 			name: "title",
@@ -66,34 +71,49 @@ export const Blogs: CollectionConfig = {
 	],
 	hooks: {
 		beforeChange: [
-			async ({ operation, req, data }) => {
-				if (operation === "create" || operation === "update") {
-					// Generate a slugified UUID from the title
-					const slugBase = slugify(data.title || "", {
-						lower: true,
-						strict: true,
-					});
-					data.slug = `${slugBase}`;
+			async ({ operation, data }) => {
+				try {
+					if (
+						operation === "create" ||
+						operation === "update" ||
+						operation === "updateByID"
+					) {
+						// Generate a slugified UUID from the title
+						const slugBase = slugify(data.title || "", {
+							lower: true,
+							strict: true,
+						});
+						data.slug = `${slugBase}`;
+					}
+				} catch (error) {
+					console.error("Error in slug hook", error);
 				}
 			},
-		],
-		afterChange: [
-			async ({ operation, doc }) => {
-				if (operation === "create" || operation === "update") {
-					if (doc?.content_html) {
-						// Convert content_html to minute_read
-						const content = doc?.content_html?.replace(
-							/&[a-zA-Z]+;|<[^>]*>?/gm,
-							" "
-						);
-						const words = content.split(" ");
-						console.log("Blog words", words.length);
-						const minute_read =
-							Math.round(
-								(words.length / 200 + Number.EPSILON) * 100
-							) / 100;
-						doc.minute_read = minute_read;
+			async ({ operation, data }) => {
+				try {
+					if (
+						operation === "create" ||
+						operation === "update" ||
+						operation === "updateByID"
+					) {
+						if (data?.content_html) {
+							// Convert content_html to minute_read
+							const content = data?.content_html?.replace(
+								/&[a-zA-Z]+;|<[^>]*>?/gm,
+								" "
+							);
+							const words = content.split(" ");
+							console.log("Blog words", words.length);
+							const minute_read =
+								Math.round(
+									(words.length / 200 + Number.EPSILON) * 100
+								) / 100;
+							data.minute_read = minute_read;
+							console.log("Blog minute_read", minute_read);
+						}
 					}
+				} catch (error) {
+					console.error("Error in minute_read hook", error);
 				}
 			},
 		],

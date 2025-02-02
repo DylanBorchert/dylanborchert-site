@@ -144,6 +144,7 @@ export interface Blog {
   content_html?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -325,6 +326,7 @@ export interface BlogsSelect<T extends boolean = true> {
   content_html?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
