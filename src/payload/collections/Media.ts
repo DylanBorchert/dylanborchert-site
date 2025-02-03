@@ -73,9 +73,11 @@ export const Media: CollectionConfig = {
 								return;
 							}
 							const prominentLightness =
-								prominentColor.hsl[2] * 100;
+								prominentColor.hsl[2] + 0.05;
 							const textForeground =
-								prominentLightness < 50 ? [0, 0, 0] : [0, 0, 1];
+								prominentLightness < 0.5
+									? [0, 0, 1]
+									: [0, 0, 0];
 							const colorPalette = {
 								Muted: palette.Muted?.hsl,
 								Vibrant: palette.Vibrant?.hsl,
