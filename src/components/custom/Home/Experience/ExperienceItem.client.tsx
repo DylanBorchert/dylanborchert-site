@@ -28,16 +28,16 @@ export default function ExperienceItem({ item }: { item: Experience }) {
                     <p className="text-muted-foreground text-md pl-1">
                         {item["description"]}
                     </p>
+                    <div className="flex flex-wrap my-1 gap-2">
+                        {tags.map((tag: any) => (
+                            <div key={tag.id} className='w-fit rounded-[8px] border-2 border-palette-vibrant/50'>
+                                <span className="text-palette-vibrant text-sm relative font-semibold w-full px-2">
+                                    {tag.name}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </IntersectingFadeIn>
-                <div className="flex flex-wrap my-1 gap-2">
-                    {tags.map((tag: any) => (
-                        <div key={tag.id} className='w-fit rounded-[8px] border-2 border-palette-vibrant/50'>
-                            <span className="text-palette-vibrant text-sm relative font-semibold w-full px-2">
-                                {tag.name}
-                            </span>
-                        </div>
-                    ))}
-                </div>
             </a>
         </div>
     );
