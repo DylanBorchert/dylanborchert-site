@@ -1,6 +1,7 @@
 import { Media } from "#/payload/payload-types";
 import configPromise from "@payload-config";
 import { NextRequest, NextResponse } from "next/server";
+import { createHash } from "crypto";
 import { getPayload } from "payload";
 
 export const GET = async (req: NextRequest) => {
@@ -40,7 +41,7 @@ export const GET = async (req: NextRequest) => {
 	const imageBuffer = await imageResponse.arrayBuffer();
 
 	// Generate an ETag based on the content
-	const etag = `"${Buffer.from(JSON.stringify(imageBuffer)).toString("base64").slice(0, 32)}"`;
+	const etag = `"${createHash("sha1").update(Buffer.from(imageBuffer)).digest("base64")}"`;
 
 	// Check if the client has the latest version of the resource
 	const clientETag = req.headers.get("If-None-Match");

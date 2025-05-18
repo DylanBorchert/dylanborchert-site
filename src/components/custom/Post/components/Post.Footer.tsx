@@ -17,7 +17,7 @@ export default function PostFooter({ post }: { post: Blog | Project }) {
                 <p className="dark:text-palette-lightMuted text-palette-darkMuted font-mono text-sm">
                     {`Last updated ${timeAgo.format(new Date(post.updatedAt))}`}
                 </p>
-                <Rss className="dark:text-palette-lightMuted/50 text-palette-darkMuted/50 hover:dark:text-palette-lightMuted hover:text-palette-darkMuted h-4 w-4 transition delay-200 ease-in cursor-pointer" onClick={() => alert('rrs feed coming soon')} />
+                <Rss className="dark:text-palette-lightMuted/50 text-palette-darkMuted/50 hover:dark:text-palette-lightMuted hover:text-palette-darkMuted h-4 w-4 transition delay-200 ease-in cursor-pointer" onClick={() => alert('rss feed coming soon')} />
             </div>
             <Footer />
         </div>
