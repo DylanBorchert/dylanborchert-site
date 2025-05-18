@@ -1,5 +1,5 @@
 'use client'
-import { Blog } from "#/payload/payload-types";
+import { Blog, Project } from "#/payload/payload-types";
 import { AutoTextSize } from "auto-text-size";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 
 
-export default function BlogHeader({ blog }: { blog: Blog }) {
+export default function BlogHeader({ post }: { post: Blog | Project }) {
 
   const formatter = new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Edmonton", // Calgary timezone
@@ -17,13 +17,8 @@ export default function BlogHeader({ blog }: { blog: Blog }) {
     day: "2-digit",
   });
 
-  useEffect(() => {
-    console.log('blog', blog);
-  }, [blog]);
-
-
   return (
-    <div>
+    <div className="px-5 w-full max-w-[calc(100dvh*(5/4))] mx-auto">
       <div className="flex justify-between py-3 items-center">
         <p className="flex-nowrap pr-3 font-semibold sm:text-base">
           DYLANBORCHERT
@@ -32,7 +27,7 @@ export default function BlogHeader({ blog }: { blog: Blog }) {
           <Link href='/' className="cursor-pointer underline text-sm">HOME</Link>
         </div>
       </div>
-      <div className="w-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative">
+      <div className="w-full relative dark:bg-black bg-white rounded-2xl px-5 border">
         <div className="z-10 relative">
           <FadeIn className="w-full">
             <AutoTextSize
@@ -41,7 +36,7 @@ export default function BlogHeader({ blog }: { blog: Blog }) {
               mode="multiline"
               className="font-bold antialiased text-transparent bg-clip-text text-center bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed"
             >
-              {blog.title}
+              {post.title}
             </AutoTextSize>
           </FadeIn>
           <FadeIn className="w-full" delay={250}>
@@ -51,18 +46,17 @@ export default function BlogHeader({ blog }: { blog: Blog }) {
               mode="multiline"
               className="font-bold antialiased bg-clip-text font-center text-center"
             >
-              {blog.description}
+              {post.description}
             </AutoTextSize>
           </FadeIn>
           <FadeIn delay={500}>
             <div className="w-full py-3 flex justify-center items-center gap-2">
-              <span className="text-center dark:text-palette-lightMuted text-palette-darkMuted">{`${Math.ceil(blog.minute_read ?? 0)} min read`}</span>
+              <span className="text-center dark:text-palette-lightMuted text-palette-darkMuted">{`${Math.ceil(post.minute_read ?? 0)} min read`}</span>
               <div className="w-1 h-1 dark:bg-palette-lightMuted bg-palette-darkMuted rounded-full"></div>
-              <span className="text-center dark:text-palette-lightMuted text-palette-darkMuted">{formatter.format(new Date(blog.createdAt))}</span>
+              <span className="text-center dark:text-palette-lightMuted text-palette-darkMuted">{formatter.format(new Date(post.createdAt))}</span>
             </div>
           </FadeIn>
         </div>
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
       </div>
     </div>
 

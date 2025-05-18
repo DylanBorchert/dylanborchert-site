@@ -11,7 +11,7 @@ export default function ExperienceItem({ item }: { item: Experience }) {
     const tags: Tag[] = item["tags"]?.map((tag: any) => tag.value).sort((tagA, tagB) => tagA.name.localeCompare(tagB.name)) || [] as Tag[];
 
     return (
-        <div className="group w-full rounded-lg transition ease-in duration-150 shadow-centre-bg dark:hover:bg-muted-foreground/10 hover:bg-muted-foreground/10  relative">
+        <div className="group w-full rounded-lg transition ease-in duration-150 shadow-centre-bg relative">
             <a href={item["Company Link"]} target="_blank" className="block p-5">
                 <IntersectingFadeIn>
                     <div className="text-muted-foreground flex justify-between items-center text-sm">

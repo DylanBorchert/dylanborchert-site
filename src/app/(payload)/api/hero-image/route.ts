@@ -1,6 +1,5 @@
 import { Media } from "#/payload/payload-types";
 import configPromise from "@payload-config";
-import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { getPayload } from "payload";
 
@@ -34,6 +33,7 @@ export const GET = async (req: NextRequest) => {
 	}
 
 	// Fetch the image and determine ETag
+	if (!imageUrl) return new NextResponse(null, { status: 404 });
 	const imageResponse = await fetch(imageUrl);
 	const contentType =
 		imageResponse.headers.get("Content-Type") || "image/jpeg";

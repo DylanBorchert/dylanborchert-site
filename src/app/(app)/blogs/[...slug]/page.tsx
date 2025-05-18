@@ -9,6 +9,7 @@ import "#/components/custom/Lexical/Lexical.css";
 import Blog from "#/components/custom/Blog/Blog";
 import { getPayload } from 'payload';
 import { Metadata, ResolvingMetadata } from 'next';
+import Post from '#/components/custom/Post/Post';
 
 type urlParams = {
   params: Promise<{ slug: string }>
@@ -41,23 +42,23 @@ export default async function Page({ params, searchParams }: urlParams) {
 
   const result = await payload.find({
     collection: "blogs",
+    showHiddenFields: true,
     where: {
       slug: { equals: slug },
     },
   });
 
-  if (result.totalDocs !== 1) {
-    return notFound();
-  }
+
+  if (result.totalDocs !== 1) return notFound();
   const blog = result.docs[0];
 
   return (
-    <div className="flex flex-col justify-between max-w-[calc(100dvh*(4/3))] mx-auto">
-      <Blog>
-        <Blog.Header blog={blog} />
-        <Blog.Content blog={blog} />
-        <Blog.Footer blog={blog} />
-      </Blog>
+    <div className="flex flex-col justify-between">
+      <Post>
+        <Post.Header post={blog} />
+        <Post.Content post={blog} />
+        <Post.Footer post={blog} />
+      </Post>
       <UpScrollButton />
       <ContactClient />
     </div>

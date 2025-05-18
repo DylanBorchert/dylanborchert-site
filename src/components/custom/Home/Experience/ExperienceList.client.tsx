@@ -32,17 +32,19 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
         {experienceItems?.map((item: Experience) => (
           <ExperienceItem key={item.id} item={item} />
         ))}
-        <IntersectingFadeIn>
-          <div className="group flex cursor-pointer  items-center pl-5 -mt-3">
-            <a className="font-bold" href={`${currentUrl}${resumeUrl}`} target="_blank">
-              View Full Resume
-            </a>
-            <ArrowUpRight
-              height={20}
-              className="group-hover:translate-x-1 group-hover:-translate-y-1 transition ease-in-out duration-150"
-            />
-          </div>
-        </IntersectingFadeIn>
+        {resumeUrl && (
+          <IntersectingFadeIn>
+            <div className="group flex cursor-pointer  items-center pl-5 -mt-3">
+              <a className="font-bold" href={`${currentUrl}${resumeUrl}`} target="_blank">
+                View Full Resume
+              </a>
+              <ArrowUpRight
+                height={20}
+                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition ease-in-out duration-150"
+              />
+            </div>
+          </IntersectingFadeIn>
+        )}
       </div>
     </div >
   );

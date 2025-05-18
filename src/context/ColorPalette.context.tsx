@@ -28,7 +28,7 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
     useEffect(() => {
         const fetchColorPalette = async () => {
             const root = document.querySelector(':root') as HTMLElement;
-            const response = await fetch(`/color-palette?theme=${displayedTheme}`);
+            const response = await fetch(`/api/color-palette?theme=${displayedTheme}`);
             const data = await response.json();
             root.style.setProperty('--palette-textForeground', `${data.TextForeground[0] * 360} ${data.TextForeground[1] * 100}% ${data.TextForeground[2] * 100}`);
             root.style.setProperty('--palette-vibrant', `${data.Vibrant[0] * 360} ${data.Vibrant[1] * 100}% ${data.Vibrant[2] * 100}%`);
@@ -37,9 +37,9 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
             root.style.setProperty('--palette-lightMuted', `${data.LightMuted[0] * 360} ${data.LightMuted[1] * 100}% ${data.LightMuted[2] * 100}%`);
             root.style.setProperty('--palette-darkVibrant', `${data.DarkVibrant[0] * 360} ${data.DarkVibrant[1] * 100}% ${data.DarkVibrant[2] * 100}%`);
             root.style.setProperty('--palette-lightVibrant', `${data.LightVibrant[0] * 360} ${data.LightVibrant[1] * 100}% ${data.LightVibrant[2] * 100}%`);
-            await fetch(`/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`);
-            await fetch(`/hero-image?theme=dark`);
-            await fetch(`/hero-image?theme=light`);
+            await fetch(`/api/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`);
+            await fetch(`/api/hero-image?theme=dark`);
+            await fetch(`/api/hero-image?theme=light`);
             setReady(true);
         };
         if (displayedTheme !== 'system') {

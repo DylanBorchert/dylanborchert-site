@@ -1,15 +1,11 @@
 import { CollectionConfig, RichTextField } from "payload";
 import {
-	HTMLConverterFeature,
 	lexicalEditor,
-	lexicalHTML,
 	LexicalRichTextAdapter,
 	SanitizedServerEditorConfig,
 	getEnabledNodes,
-	$convertFromMarkdownString,
 } from "@payloadcms/richtext-lexical";
-import { createHeadlessEditor } from "@payloadcms/richtext-lexical/lexical/headless";
-import { $convertToMarkdownString } from "@payloadcms/richtext-lexical/lexical/markdown";
+import { createHeadlessEditor } from "@lexical/headless";
 import { $getRoot } from "lexical";
 import slugify from "slugify";
 
@@ -44,14 +40,6 @@ export const Blogs: CollectionConfig = {
 			},
 		},
 		{
-			name: "minute_read",
-			label: "Minute Read",
-			type: "number",
-			admin: {
-				readOnly: true,
-			},
-		},
-		{
 			name: "tags",
 			label: "Tags",
 			type: "relationship",
@@ -59,22 +47,24 @@ export const Blogs: CollectionConfig = {
 			hasMany: true,
 		},
 		{
-			name: "content",
-			type: "richText",
-			label: "Content",
-			editor: lexicalEditor({
-				features: ({ defaultFeatures }) => [
-					...defaultFeatures,
-					HTMLConverterFeature({}),
-				],
-			}),
-			required: true,
-			localized: true,
+			name: "minute_read",
+			label: "Minute Read",
+			type: "number",
 			admin: {
-				width: "100%",
+				readOnly: true,
+				width: "25%",
 			},
 		},
-		lexicalHTML("content", { name: "content_html" }),
+		{
+			name: "content",
+			type: "richText",
+			editor: lexicalEditor({
+				features: ({ defaultFeatures, rootFeatures }) => [
+					...defaultFeatures,
+					...rootFeatures,
+				],
+			}),
+		},
 	],
 	hooks: {
 		beforeChange: [
@@ -97,21 +87,16 @@ export const Blogs: CollectionConfig = {
 							(field) =>
 								"name" in field && field.name === "content"
 						) as RichTextField;
-
 					const lexicalAdapter: LexicalRichTextAdapter =
 						otherRichTextField.editor as LexicalRichTextAdapter;
-
 					const sanitizedServerEditorConfig: SanitizedServerEditorConfig =
 						lexicalAdapter.editorConfig;
-
 					const headlessEditor = createHeadlessEditor({
 						nodes: getEnabledNodes({
 							editorConfig: sanitizedServerEditorConfig,
 						}),
 					});
-
 					const headlessEditorState = JSON.stringify(data.content);
-
 					if (headlessEditorState) {
 						try {
 							headlessEditor.update(
@@ -130,13 +115,11 @@ export const Blogs: CollectionConfig = {
 								"ERROR parsing editor state"
 							);
 						}
-
 						// Export to plain text
 						const plainTextContent =
 							headlessEditor.getEditorState().read(() => {
 								return $getRoot().getTextContent();
 							}) || "";
-
 						const words = plainTextContent
 							.replaceAll("\n", " ")
 							.split(" ")

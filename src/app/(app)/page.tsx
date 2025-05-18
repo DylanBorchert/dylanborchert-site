@@ -11,7 +11,7 @@ import { ContactClient } from "#/components/custom/Contact";
 export default async function Home() {
 
   return (
-    <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(4/3))] relative">
+    <main className="mx-auto flex flex-col px-5 max-w-[calc(100dvh*(5/4))] relative">
       <Hero>
         <Hero.Header />
         <Hero.Body />

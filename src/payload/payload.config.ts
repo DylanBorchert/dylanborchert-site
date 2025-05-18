@@ -1,8 +1,9 @@
 // storage-adapter-import-placeholder
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { lexicalEditor, BlocksFeature } from "@payloadcms/richtext-lexical";
 import { resendAdapter } from "@payloadcms/email-resend";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { postgresAdapter } from "@payloadcms/db-postgres";
+import { nestedDocsPlugin } from "@payloadcms/plugin-nested-docs";
 
 import path from "path";
 import { buildConfig } from "payload";
@@ -16,6 +17,8 @@ import { Projects } from "./collections/Projects";
 import { Experience } from "./collections/Experience";
 import Home from "./globals/Home";
 import { Tags } from "./collections/Tags";
+import { languages } from "#/payload/components/code/languages";
+import { CodeBlock } from "./blocks/CodeBlock";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -48,7 +51,12 @@ export default buildConfig({
 	collections: [Users, Media, Blogs, Projects, Experience, Tags],
 	globals: [Home],
 	editor: lexicalEditor({
-		features: ({ defaultFeatures, rootFeatures }) => [...defaultFeatures],
+		features: ({ defaultFeatures, rootFeatures }) => [
+			...defaultFeatures,
+			BlocksFeature({
+				blocks: [CodeBlock], //project and blogs
+			}),
+		],
 	}),
 	secret: process.env.PAYLOAD_SECRET || "",
 	typescript: {

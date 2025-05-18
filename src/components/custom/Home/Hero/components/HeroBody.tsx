@@ -13,7 +13,6 @@ import {
     TooltipTrigger,
 } from "#/components/ui/tooltip"
 import { AutoTextSize } from "auto-text-size";
-import { useColorPalette } from "#/context/ColorPalette.context";
 
 
 export default function Hero() {
@@ -39,7 +38,7 @@ export default function Hero() {
         <div className="overflow-hidden relative rounded-2xl h-full">
             <AuroraBackground className="w-full h-full absolute top-0"><></></AuroraBackground>
             <div className="sm:w-1/2 md:w-1/3 w-full p-5 h-full relative max-w-96 sm:max-w-none ">
-                <FadeIn>
+                <FadeIn delay={100}>
                     <AutoTextSize maxFontSizePx={1000} className="font-bold text-palette-textForeground">
                         Hello There!
                     </AutoTextSize>
