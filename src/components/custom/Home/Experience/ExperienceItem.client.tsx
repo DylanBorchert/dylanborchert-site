@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { format } from "date-fns";
 import IntersectingFadeIn from "#/components/IntersectingFadeIn";
 import { useColorPalette } from "#/context/ColorPalette.context";
+import Link from "next/link";
 
 export default function ExperienceItem({ item }: { item: Experience }) {
 
@@ -12,7 +13,7 @@ export default function ExperienceItem({ item }: { item: Experience }) {
 
     return (
         <div className="group w-full rounded-lg transition ease-in duration-150 shadow-centre-bg relative">
-            <a href={item["Company Link"]} target="_blank" className="block p-5">
+            <Link href={item["Company Link"]} target="_blank" className="block p-5">
                 <IntersectingFadeIn>
                     <div className="text-muted-foreground flex justify-between items-center text-sm">
                         <div className="gap-1 flex">
@@ -38,7 +39,7 @@ export default function ExperienceItem({ item }: { item: Experience }) {
                         ))}
                     </div>
                 </IntersectingFadeIn>
-            </a>
+            </Link>
         </div>
     );
 }

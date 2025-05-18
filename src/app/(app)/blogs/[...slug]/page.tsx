@@ -6,7 +6,6 @@ import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
 import { ContactClient } from "#/components/custom/Contact";
 import "#/components/custom/Lexical/Lexical.css";
-import Blog from "#/components/custom/Blog/Blog";
 import { getPayload } from 'payload';
 import { Metadata, ResolvingMetadata } from 'next';
 import Post from '#/components/custom/Post/Post';

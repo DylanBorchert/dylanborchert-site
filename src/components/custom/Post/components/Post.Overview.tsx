@@ -65,7 +65,7 @@ export default function PostContent({ post }: { post: Blog | Project }) {
 
             let foundActive = false;
             headings.forEach((heading) => {
-                const offsetTop = heading.offsetTop - 75;
+                const offsetTop = (heading as HTMLElement).offsetTop - 75;
                 if (scrollTop >= offsetTop) {
                     setActiveHeading(heading.id);
                     foundActive = true;

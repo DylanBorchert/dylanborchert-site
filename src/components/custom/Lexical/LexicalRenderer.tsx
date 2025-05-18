@@ -1,7 +1,7 @@
 'use client'
 import { defaultElementRenderers, PayloadLexicalReactRenderer, PayloadLexicalReactRendererContent } from "@atelier-disko/payload-lexical-react-renderer";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { HashIcon } from "lucide-react";
 import slugify from "slugify";
 import { useEffect, useMemo } from "react";
@@ -67,28 +67,28 @@ export default function LexicalRenderer({ content }: { content: Blog | Project }
                 }
             }}
             blockRenderers={{
-                Code: (props) => {
-                    const { code, language, blockName } = props.fields
+                // Code: (props) => {
+                //     const { code, language, blockName } = props.fields
 
-                    return (
-                        <div className='relative'>
-                            <div className="absolute right-0 group code-copy w-full flex justify-between py-2 border-b-[1px] border-black/15 dark:border-white/15 px-4">
-                                <span className="text-sm">{blockName}</span>
-                                <span className="text-sm">{language}</span>
-                            </div>
-                            <SyntaxHighlighter
-                                className={"rounded-md outline-none pt-20 code-block"}
-                                style={updatedTheme === "dark" ? vscDarkPlus : vs}
-                                data-start-line={1}
-                                language={language}
-                                PreTag="div"
-                                codeTagProps={{ style: { fontFamily: 'inherit' } }}
-                            >
-                                {String(code).replace(/\n$/, "")}
-                            </SyntaxHighlighter>
-                        </div>
-                    )
-                },
+                //     return (
+                //         <div className='relative'>
+                //             <div className="absolute right-0 group code-copy w-full flex justify-between py-2 border-b-[1px] border-black/15 dark:border-white/15 px-4">
+                //                 <span className="text-sm">{blockName}</span>
+                //                 <span className="text-sm">{language}</span>
+                //             </div>
+                //             <SyntaxHighlighter
+                //                 className={"rounded-md outline-none pt-20 code-block"}
+                //                 style={updatedTheme === "dark" ? vscDarkPlus : vs}
+                //                 data-start-line={1}
+                //                 language={language}
+                //                 PreTag="div"
+                //                 codeTagProps={{ style: { fontFamily: 'inherit' } }}
+                //             >
+                //                 {String(code).replace(/\n$/, "")}
+                //             </SyntaxHighlighter>
+                //         </div>
+                //     )
+                // },
             }}
         />
     )

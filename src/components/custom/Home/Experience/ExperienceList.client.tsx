@@ -8,6 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Experience } from "#/payload/payload-types";
 import useOrigin from "#/hooks/getOrigin";
 import { useColorPalette } from "#/context/ColorPalette.context";
+import Link from "next/link";
 
 export default function ExperienceClient({ experience, resumeUrl }: { experience: any, resumeUrl: string }) {
   const [experienceItems, setExperienceItems] = useState(experience);
@@ -35,9 +36,9 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
         {resumeUrl && (
           <IntersectingFadeIn>
             <div className="group flex cursor-pointer  items-center pl-5 -mt-3">
-              <a className="font-bold" href={`${currentUrl}${resumeUrl}`} target="_blank">
+              <Link className="font-bold" href={`${currentUrl}${resumeUrl}`} target="_blank">
                 View Full Resume
-              </a>
+              </Link>
               <ArrowUpRight
                 height={20}
                 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition ease-in-out duration-150"
