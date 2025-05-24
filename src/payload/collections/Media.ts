@@ -78,6 +78,10 @@ export const Media: CollectionConfig = {
 								prominentLightness < 0.5
 									? [0, 0, 1]
 									: [0, 0, 0];
+							const textBackground =
+								prominentLightness >= 0.5
+									? [0, 0, 1]
+									: [0, 0, 0];
 							const colorPalette = {
 								Muted: palette.Muted?.hsl,
 								Vibrant: palette.Vibrant?.hsl,
@@ -86,6 +90,7 @@ export const Media: CollectionConfig = {
 								DarkVibrant: palette.DarkVibrant?.hsl,
 								LightVibrant: palette.LightVibrant?.hsl,
 								TextForeground: textForeground,
+								TextBackground: textBackground,
 							};
 							await req.payload.update({
 								collection: "media",

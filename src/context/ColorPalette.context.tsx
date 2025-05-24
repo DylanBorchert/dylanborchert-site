@@ -31,6 +31,7 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
             const response = await fetch(`/api/color-palette?theme=${displayedTheme}`);
             const data = await response.json();
             root.style.setProperty('--palette-textForeground', `${data.TextForeground[0] * 360} ${data.TextForeground[1] * 100}% ${data.TextForeground[2] * 100}`);
+            root.style.setProperty('--palette-textBackground', `${data.TextBackground[0] * 360} ${data.TextBackground[1] * 100}% ${data.TextBackground[2] * 100}`);
             root.style.setProperty('--palette-vibrant', `${data.Vibrant[0] * 360} ${data.Vibrant[1] * 100}% ${data.Vibrant[2] * 100}%`);
             root.style.setProperty('--palette-muted', `${data.Muted[0] * 360} ${data.Muted[1] * 100}% ${data.Muted[2] * 100}%`);
             root.style.setProperty('--palette-darkMuted', `${data.DarkMuted[0] * 360} ${data.DarkMuted[1] * 100}% ${data.DarkMuted[2] * 100}%`);

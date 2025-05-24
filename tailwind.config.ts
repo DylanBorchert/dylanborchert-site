@@ -41,8 +41,10 @@ const tailwindConfig: Config = {
 				},
 			},
 			backgroundImage: {
-				"hero-parallax-dark": "url('/api/hero-image?theme=dark')",
-				"hero-parallax-light": "url('/api/hero-image?theme=light')",
+				"hero-parallax-dark":
+					"url('/api/hero-image?theme=dark'),linear-gradient(hsl(var(--palette-darkVibrant)),hsl(var(--palette-vibrant)),hsl(var(--palette-lightVibrant)))",
+				"hero-parallax-light":
+					"url('/api/hero-image?theme=light'),linear-gradient(hsl(var(--palette-darkVibrant)),hsl(var(--palette-vibrant)),hsl(var(--palette-lightVibrant)))",
 			},
 			boxShadow: {
 				"inner-left-right":
@@ -59,6 +61,7 @@ const tailwindConfig: Config = {
 				foreground: "hsl(var(--foreground))",
 				palette: {
 					textForeground: "hsl(var(--palette-textForeground))",
+					textBackground: "hsl(var(--palette-textBackground))",
 					vibrant: "hsl(var(--palette-vibrant))",
 					muted: "hsl(var(--palette-muted))",
 					darkMuted: "hsl(var(--palette-darkMuted))",

@@ -28,6 +28,7 @@ const IntersectingFadeIn: React.FC<Props> = ({
     const [isVisible, setIsVisible] = useState(visible || false);
 
     useEffect(() => {
+        const node = ref.current;
         const observer = new IntersectionObserver(
             (entries) => {
                 const entry = entries[0];
@@ -41,12 +42,12 @@ const IntersectingFadeIn: React.FC<Props> = ({
             },
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        if (node) {
+            observer.observe(node);
         }
 
         return () => {
-            if (ref.current) observer.unobserve(ref.current);
+            if (node) observer.unobserve(node);
         };
     }, [onComplete]);
 
