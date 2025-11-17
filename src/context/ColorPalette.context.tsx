@@ -30,17 +30,19 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
             const root = document.querySelector(':root') as HTMLElement;
             const response = await fetch(`/api/color-palette?theme=${displayedTheme}`);
             const data = await response.json();
-            root.style.setProperty('--palette-textForeground', `${data.TextForeground[0] * 360} ${data.TextForeground[1] * 100}% ${data.TextForeground[2] * 100}`);
-            root.style.setProperty('--palette-textBackground', `${data.TextBackground[0] * 360} ${data.TextBackground[1] * 100}% ${data.TextBackground[2] * 100}`);
-            root.style.setProperty('--palette-vibrant', `${data.Vibrant[0] * 360} ${data.Vibrant[1] * 100}% ${data.Vibrant[2] * 100}%`);
-            root.style.setProperty('--palette-muted', `${data.Muted[0] * 360} ${data.Muted[1] * 100}% ${data.Muted[2] * 100}%`);
-            root.style.setProperty('--palette-darkMuted', `${data.DarkMuted[0] * 360} ${data.DarkMuted[1] * 100}% ${data.DarkMuted[2] * 100}%`);
-            root.style.setProperty('--palette-lightMuted', `${data.LightMuted[0] * 360} ${data.LightMuted[1] * 100}% ${data.LightMuted[2] * 100}%`);
-            root.style.setProperty('--palette-darkVibrant', `${data.DarkVibrant[0] * 360} ${data.DarkVibrant[1] * 100}% ${data.DarkVibrant[2] * 100}%`);
-            root.style.setProperty('--palette-lightVibrant', `${data.LightVibrant[0] * 360} ${data.LightVibrant[1] * 100}% ${data.LightVibrant[2] * 100}%`);
-            await fetch(`/api/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`);
-            await fetch(`/api/hero-image?theme=dark`);
-            await fetch(`/api/hero-image?theme=light`);
+            if (data) {
+                root.style.setProperty('--palette-textForeground', `${data.TextForeground[0] * 360} ${data.TextForeground[1] * 100}% ${data.TextForeground[2] * 100}`);
+                root.style.setProperty('--palette-textBackground', `${data.TextBackground[0] * 360} ${data.TextBackground[1] * 100}% ${data.TextBackground[2] * 100}`);
+                root.style.setProperty('--palette-vibrant', `${data.Vibrant[0] * 360} ${data.Vibrant[1] * 100}% ${data.Vibrant[2] * 100}%`);
+                root.style.setProperty('--palette-muted', `${data.Muted[0] * 360} ${data.Muted[1] * 100}% ${data.Muted[2] * 100}%`);
+                root.style.setProperty('--palette-darkMuted', `${data.DarkMuted[0] * 360} ${data.DarkMuted[1] * 100}% ${data.DarkMuted[2] * 100}%`);
+                root.style.setProperty('--palette-lightMuted', `${data.LightMuted[0] * 360} ${data.LightMuted[1] * 100}% ${data.LightMuted[2] * 100}%`);
+                root.style.setProperty('--palette-darkVibrant', `${data.DarkVibrant[0] * 360} ${data.DarkVibrant[1] * 100}% ${data.DarkVibrant[2] * 100}%`);
+                root.style.setProperty('--palette-lightVibrant', `${data.LightVibrant[0] * 360} ${data.LightVibrant[1] * 100}% ${data.LightVibrant[2] * 100}%`);
+                Promise.all([fetch(`/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`), fetch(`/hero-image?theme=dark`), fetch(`/hero-image?theme=light`)])
+            } else {
+                console.error('Failed to fetch color palette data');
+            }
             setReady(true);
         };
         if (displayedTheme !== 'system') {
