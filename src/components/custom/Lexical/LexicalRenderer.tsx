@@ -5,7 +5,7 @@ import { defaultElementRenderers, PayloadLexicalReactRenderer, PayloadLexicalRea
 import { HashIcon } from "lucide-react";
 import slugify from "slugify";
 import { useEffect, useMemo } from "react";
-import { useToast } from "#/hooks/use-toast";
+import { toast } from "sonner"
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Blog, Project } from "#/payload/payload-types";
@@ -14,7 +14,6 @@ import classNames from "classnames";
 
 
 export default function LexicalRenderer({ content }: { content: Blog | Project }) {
-    const { toast } = useToast();
     const pathname = usePathname();
     const { systemTheme, theme } = useTheme();
 
@@ -54,7 +53,7 @@ export default function LexicalRenderer({ content }: { content: Blog | Project }
                     const createLink = () => {
                         window.location.hash = slug;
                         navigator.clipboard.writeText(`${window.location.origin}${pathname}#${slug}`);
-                        toast({ title: "Link Copied", description: "The link to this section has been copied to your clipboard." });
+                        toast("Link Copied", { description: "The link to this section has been copied to your clipboard." });
                     }
                     return (
                         <div className={classNames('flex items-center justify-start gap-2 w-fit h-fit relative group', {
@@ -72,7 +71,7 @@ export default function LexicalRenderer({ content }: { content: Blog | Project }
 
                 //     return (
                 //         <div className='relative'>
-                //             <div className="absolute right-0 group code-copy w-full flex justify-between py-2 border-b-[1px] border-black/15 dark:border-white/15 px-4">
+                //             <div className="absolute right-0 group code-copy w-full flex justify-between py-2 border-b border-black/15 dark:border-white/15 px-4">
                 //                 <span className="text-sm">{blockName}</span>
                 //                 <span className="text-sm">{language}</span>
                 //             </div>

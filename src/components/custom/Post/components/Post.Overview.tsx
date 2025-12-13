@@ -90,7 +90,7 @@ export default function PostContent({ post }: { post: Blog | Project }) {
                 <div className="sticky top-0 left-0 h-fit" >
                     <p className="p-5 font-semibold">Overview</p>
                     <div className="w-full h-0.5 bg-transparent z-50 mb-3" ref={progressRef} style={{ '--progress': '0%' } as React.CSSProperties}>
-                        <div className="h-full bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed transition-[width] ease-in-out duration-500 w-[--progress]" />
+                        <div className="h-full bg-linear-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed transition-[width] ease-in-out duration-500 w-(--progress)" />
                     </div>
                     {headingList.map((heading) =>
                         <div key={heading.id} onClick={() => handleHeadingClick(heading.id)} className="cursor-pointer flex items-center gap-2 mb-2 w-fit hover:text-palette-vibrant duration-200 ease-in-out">

@@ -2,17 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Loader = () => {
-    return (
-        <StyledWrapper>
-            <div className="loadingspinner">
-                <div id="square1" />
-                <div id="square2" />
-                <div id="square3" />
-                <div id="square4" />
-                <div id="square5" />
-            </div>
-        </StyledWrapper>
-    );
+  return (
+    <StyledWrapper>
+      <div className="loadingspinner">
+        <div id="square1" />
+        <div id="square2" />
+        <div id="square3" />
+        <div id="square4" />
+        <div id="square5" />
+      </div>
+    </StyledWrapper>
+  );
 }
 
 const StyledWrapper = styled.div`

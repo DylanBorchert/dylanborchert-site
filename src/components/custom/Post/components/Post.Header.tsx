@@ -34,7 +34,7 @@ export default function BlogHeader({ post }: { post: Blog | Project }) {
               maxFontSizePx={1000}
               minFontSizePx={80}
               mode="multiline"
-              className="font-bold antialiased text-transparent bg-clip-text text-center bg-gradient-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed"
+              className="font-bold antialiased text-transparent bg-clip-text text-center bg-linear-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed"
             >
               {post.title}
             </AutoTextSize>

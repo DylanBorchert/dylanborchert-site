@@ -2,7 +2,7 @@
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 import Image from "next/image";
 import { encode } from "qss";
-import React from "react";
+import React, { JSXElementConstructor, ReactElement } from "react";
 import {
     AnimatePresence,
     motion,
@@ -13,7 +13,7 @@ import Link from "next/link";
 import { cn } from "#/lib/utils";
 
 type LinkPreviewProps = {
-    children: React.ReactNode;
+    children: any;
     url: string;
     className?: string;
     width?: number;
@@ -106,7 +106,7 @@ export const LinkPreview = ({
                 </HoverCardPrimitive.Trigger>
 
                 <HoverCardPrimitive.Content
-                    className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
+                    className="origin-(--radix-hover-card-content-transform-origin)"
                     side="top"
                     align="center"
                     sideOffset={10}

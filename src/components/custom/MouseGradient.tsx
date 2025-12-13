@@ -21,6 +21,6 @@ export default function MouseGradient() {
 
     return <div
         ref={targetRef}
-        className="absolute before:pointer-events-none before:fixed before:inset-0 before:z-[5] before:opacity-15 md:before:bg-[radial-gradient(circle_400px_at_var(--x,_100px)_var(--y,_100px),_hsl(var(--palette-darkMuted))_0%,_transparent_100%)] "
+        className="absolute before:pointer-events-none before:fixed before:inset-0 before:z-5 before:opacity-15 md:before:bg-[radial-gradient(circle_400px_at_var(--x,100px)_var(--y,100px),hsl(var(--palette-darkMuted))_0%,transparent_100%)] "
     ></div>
 }

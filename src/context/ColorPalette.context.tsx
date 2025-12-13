@@ -2,15 +2,16 @@
 import LoadingPage from '#/components/custom/loading';
 import { useTheme } from 'next-themes';
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { LCH } from "colorizr";
 
 export interface ColorPaletteType {
-    Vibrant: string;
-    Muted: string;
-    DarkMuted: string;
-    LightMuted: string;
-    DarkVibrant: string;
-    LightVibrant: string;
-    TextForeground: string;
+    Vibrant: LCH;
+    Muted: LCH;
+    DarkMuted: LCH;
+    LightMuted: LCH;
+    DarkVibrant: LCH;
+    LightVibrant: LCH;
+    TextForeground: LCH;
 }
 
 const ColorPaletteContext = createContext({});
@@ -18,6 +19,10 @@ const ColorPaletteContext = createContext({});
 interface ColorPaletteProviderProps {
     children: React.ReactNode;
 }
+
+const oklch = ({ l, c, h }: LCH) =>
+    `oklch(${l} ${c} ${h})`;
+
 
 export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ children }): React.ReactElement | null => {
     const { systemTheme, theme } = useTheme();
@@ -30,16 +35,16 @@ export const ColorPaletteProvider: React.FC<ColorPaletteProviderProps> = ({ chil
             const root = document.querySelector(':root') as HTMLElement;
             const response = await fetch(`/api/color-palette?theme=${displayedTheme}`);
             const data = await response.json();
+            console.log('Fetched color palette:', data);
             if (data) {
-                root.style.setProperty('--palette-textForeground', `${data.TextForeground[0] * 360} ${data.TextForeground[1] * 100}% ${data.TextForeground[2] * 100}`);
-                root.style.setProperty('--palette-textBackground', `${data.TextBackground[0] * 360} ${data.TextBackground[1] * 100}% ${data.TextBackground[2] * 100}`);
-                root.style.setProperty('--palette-vibrant', `${data.Vibrant[0] * 360} ${data.Vibrant[1] * 100}% ${data.Vibrant[2] * 100}%`);
-                root.style.setProperty('--palette-muted', `${data.Muted[0] * 360} ${data.Muted[1] * 100}% ${data.Muted[2] * 100}%`);
-                root.style.setProperty('--palette-darkMuted', `${data.DarkMuted[0] * 360} ${data.DarkMuted[1] * 100}% ${data.DarkMuted[2] * 100}%`);
-                root.style.setProperty('--palette-lightMuted', `${data.LightMuted[0] * 360} ${data.LightMuted[1] * 100}% ${data.LightMuted[2] * 100}%`);
-                root.style.setProperty('--palette-darkVibrant', `${data.DarkVibrant[0] * 360} ${data.DarkVibrant[1] * 100}% ${data.DarkVibrant[2] * 100}%`);
-                root.style.setProperty('--palette-lightVibrant', `${data.LightVibrant[0] * 360} ${data.LightVibrant[1] * 100}% ${data.LightVibrant[2] * 100}%`);
-                Promise.all([fetch(`/color-palette?theme=${displayedTheme === 'dark' ? 'light' : 'dark'}`), fetch(`/hero-image?theme=dark`), fetch(`/hero-image?theme=light`)])
+                root.style.setProperty('--palette-muted', oklch(data.Muted));
+                root.style.setProperty('--palette-vibrant', oklch(data.Vibrant));
+                root.style.setProperty('--palette-darkMuted', oklch(data.DarkMuted));
+                root.style.setProperty('--palette-lightMuted', oklch(data.LightMuted));
+                root.style.setProperty('--palette-darkVibrant', oklch(data.DarkVibrant));
+                root.style.setProperty('--palette-lightVibrant', oklch(data.LightVibrant));
+                root.style.setProperty('--palette-textForeground', oklch(data.TextForeground));
+                root.style.setProperty('--palette-textBackground', oklch(data.TextBackground));
             } else {
                 console.error('Failed to fetch color palette data');
             }

@@ -2,7 +2,6 @@
 
 import { notFound } from 'next/navigation'
 import config from '@payload-config'
-import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
 import { ContactClient } from "#/components/custom/Contact";
 import "#/components/custom/Lexical/Lexical.css";

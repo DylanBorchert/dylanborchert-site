@@ -21,14 +21,13 @@ export default async function Home() {
         <div className="z-10 relative">
           <AboutServer />
         </div>
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
       </section>
       <section className="h-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative mt-5">
         <div className="z-10 relative">
           <ExperienceServer />
-          {/* <Projects /> */}
         </div>
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
       </section>
       <Footer />
       <UpScrollButton />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { Toaster } from "#/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner"
 import { ContactProvider } from "#/context/ContactSheet.context";
 import { ColorPaletteProvider } from "#/context/ColorPalette.context";
 const SpaceGrotesk = Space_Grotesk({ subsets: ["latin"] });

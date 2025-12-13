@@ -6,7 +6,7 @@ import PostBody from "./components/Post.Body";
 import PostOverview from "./components/Post.Overview";
 
 const Post = ({ children }: PropsWithChildren) => {
-  return <div className="flex flex-col justify-between min-h-[100dvh]">{children}</div>;
+  return <div className="flex flex-col justify-between min-h-dvh">{children}</div>;
 };
 
 const PostContent = ({ post }: { post: Blog | Project }) => {

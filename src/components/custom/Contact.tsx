@@ -11,7 +11,7 @@ import {
     SheetHeader,
     SheetTitle,
 } from "#/components/ui/sheet";
-import { useToast } from "#/hooks/use-toast";
+import { toast } from "sonner"
 import {
     Form,
     FormControl,
@@ -34,7 +34,6 @@ const formSchema = z.object({
 });
 
 export const ContactClient = () => {
-    const { toast } = useToast();
     const { isSheetOpen, openSheet, closeSheet } = useContactSheet();
 
     const form = useForm({
@@ -45,10 +44,10 @@ export const ContactClient = () => {
     function onSubmit(values: z.infer<typeof formSchema>) {
         sendEmail(values)
             .then(() => {
-                toast({ title: "Message Sent", description: "I will get back to you soon." });
+                toast("Message Sent", { description: "I will get back to you soon." });
             })
             .catch(() => {
-                toast({ title: "Error", description: "An error occurred. Please try again." });
+                toast("Error", { description: "An error occurred. Please try again." });
             });
         closeSheet();
     }
@@ -108,7 +107,7 @@ export const ContactClient = () => {
                             )}
                         />
                         <SheetFooter>
-                            <Button type="submit" className='bg-palette-lightMuted text-palette-darkMuted hover:bg-palette-muted'>Send Message</Button>
+                            <Button type="submit">Send Message</Button>
                         </SheetFooter>
                     </form>
                 </Form>

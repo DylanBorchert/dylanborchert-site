@@ -8,7 +8,6 @@ import Image from "next/image";
 import useOrigin from '#/hooks/getOrigin';
 import { Media } from "#/payload/payload-types";
 import { Suspense } from 'react';
-import { useColorPalette } from '#/context/ColorPalette.context';
 
 export default function About({ home }: any) {
 
