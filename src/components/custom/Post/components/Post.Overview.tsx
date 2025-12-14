@@ -85,7 +85,7 @@ export default function PostContent({ post }: { post: Blog | Project }) {
     }, []);
 
     return (
-        <div ref={containerRef}>
+        <div ref={containerRef} className="z-20">
             {showOverview && (
                 <div className="sticky top-0 left-0 h-fit" >
                     <p className="p-5 font-semibold">Overview</p>

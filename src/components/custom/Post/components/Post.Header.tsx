@@ -2,11 +2,8 @@
 import { Blog, Project } from "#/payload/payload-types";
 import { AutoTextSize } from "auto-text-size";
 import Link from "next/link";
-import { useEffect } from "react";
 import FadeIn from "react-fade-in";
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
-
+import ChangeTheme from "../../ChangeTheme";
 
 export default function BlogHeader({ post }: { post: Blog | Project }) {
 
@@ -18,14 +15,16 @@ export default function BlogHeader({ post }: { post: Blog | Project }) {
   });
 
   return (
-    <div className="px-5 w-full max-w-[calc(100dvh*(5/4))] mx-auto">
-      <div className="flex justify-between py-3 items-center">
-        <p className="flex-nowrap pr-3 font-semibold sm:text-base">
-          DYLANBORCHERT
+    <div className="px-5 w-full max-w-[calc(100dvh*(5/4))] mx-auto z-10">
+      <div className="flex justify-between py-3 items-center mx-5">
+        <p className="flex-nowrap pr-3 font-semibold sm:text-base grow-1">
+          <Link href='/' className="cursor-pointer text-md">DYLANBORCHERT</Link>
         </p>
-        <div className="*:mx-1 flex-wrap w-fit flex-col sm:block hidden md:flex-row">
-          <Link href='/' className="cursor-pointer underline text-sm">HOME</Link>
+        <div className="*:mx-1 flex-wrap w-fit flex-col sm:block hidden md:flex-row items-center mr-1.5">
+          <Link href='/blogs' className="cursor-pointer underline text-sm mr-2">BLOGS</Link>
+          <Link href='/projects' className="cursor-pointer underline text-sm">PROJECTS</Link>
         </div>
+        <ChangeTheme fillType="fill-foreground" />
       </div>
       <div className="w-full relative dark:bg-black bg-white rounded-2xl px-5 border">
         <div className="z-10 relative">

@@ -120,6 +120,27 @@
         350% 50%;
     }
   }
+
+  --animate-forward-spin: forward-spin 0.3s linear 1;
+  --animate-reverse-spin: reverse-spin 0.3s linear 1;
+
+  @keyframes forward-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes reverse-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
 }
 
 :root {

@@ -6,6 +6,7 @@ import UpScrollButton from "#/components/custom/UpScrollButton";
 import ExperienceServer from "#/components/custom/Home/Experience/Experience.server";
 import AboutServer from "#/components/custom/Home/About/About.server";
 import { ContactClient } from "#/components/custom/Contact";
+import { cn } from "#/lib/utils";
 
 
 export default async function Home() {
@@ -17,17 +18,24 @@ export default async function Home() {
         <Hero.Body />
         <Hero.Footer />
       </Hero>
-      <section className="h-full dark:bg-grid-small-white/[0.2] bg-grid-small-black/[0.2] relative">
-        <div className="z-10 relative">
-          <AboutServer />
-        </div>
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
-      </section>
-      <section className="h-full dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative mt-5">
-        <div className="z-10 relative">
-          <ExperienceServer />
-        </div>
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div>
+      <section className={cn(
+        "h-full relative inset-0",
+        "[background-size:20px_20px]",
+        "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
+        "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]",
+      )} >
+
+        <section className="h-full relative inset-0">
+          <div className="z-10 relative">
+            <AboutServer />
+          </div>
+        </section>
+        <section className="h-full relative mt-5">
+          <div className="z-10 relative">
+            <ExperienceServer />
+          </div>
+        </section>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_10%,var(--background))] dark:bg-background"></div>
       </section>
       <Footer />
       <UpScrollButton />
