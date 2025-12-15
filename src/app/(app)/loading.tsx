@@ -1,5 +1,5 @@
-import LoadingPage from "#/components/custom/loading";
+import Loader from "#/components/custom/Loader";
 
 export default function Loading() {
-	return <LoadingPage />;
+  return <Loader />;
 }

@@ -3,7 +3,7 @@
 import { AutoTextSize } from 'auto-text-size'
 
 import Typewriter from 'typewriter-effect';
-import IntersectingFadeIn from "../../../IntersectingFadeIn";
+import IntersectingFadeIn from "../../IntersectingFadeIn";
 import Image from "next/image";
 import useOrigin from '#/hooks/getOrigin';
 import { Media } from "#/payload/payload-types";

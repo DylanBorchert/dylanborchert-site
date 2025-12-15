@@ -9,7 +9,7 @@ export default function Footer(props: any) {
   const { openSheet } = useContactSheet();
 
   return (
-    <div className="w-full p-5 flex justify-center relative text-foreground rounded-t-2xl mt-3 h-40 border-t border-x dark:bg-black bg-white">
+    <div className="w-full p-5 flex justify-center relative text-foreground rounded-t-2xl mt-3 h-40 border-t border-x dark:bg-black bg-white mx-auto max-w-[calc(100dvh*(5/4))]">
       <div className="w-full flex flex-col justify-between h-full">
         <div className="flex justify-between items-center">
           <p className="font-semibold">My Portfolio.</p>
