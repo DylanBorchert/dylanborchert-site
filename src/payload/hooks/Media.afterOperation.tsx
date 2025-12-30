@@ -10,9 +10,7 @@ export const MediaAfterOperation: any = [
                 operation === "findByID" ||
                 operation === "update")
         ) {
-            const host = req.origin?.includes("localhost")
-                ? "http://localhost:3000"
-                : req.origin;
+            const host = req.origin;
             if (result.mimeType.includes("image")) {
                 //No webp support https://github.com/Vibrant-Colors/node-vibrant/issues/44
                 if (result.mimeType.includes("webp")) {

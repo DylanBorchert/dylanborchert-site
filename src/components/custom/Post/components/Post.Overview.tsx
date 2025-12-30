@@ -85,29 +85,44 @@ export default function PostContent({ post }: { post: Blog | Project }) {
     }, []);
 
     return (
-        <div ref={containerRef} className="z-20">
-            {showOverview && (
-                <div className="sticky top-0 left-0 h-fit" >
-                    <p className="p-5 font-semibold">Overview</p>
-                    <div className="w-full h-0.5 bg-transparent z-50 mb-3" ref={progressRef} style={{ '--progress': '0%' } as React.CSSProperties}>
-                        <div className="h-full bg-linear-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed transition-[width] ease-in-out duration-500 w-(--progress)" />
-                    </div>
-                    {headingList.map((heading) =>
-                        <div key={heading.id} onClick={() => handleHeadingClick(heading.id)} className="cursor-pointer flex items-center gap-2 mb-2 w-fit hover:text-palette-vibrant duration-200 ease-in-out">
-                            <div className="w-5 h-8 flex items-center justify-start">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="32" viewBox="0 0 10 32" fill="none" className={
-                                    classNames("fill-palette-vibrant opacity-0 duration-200 ease-linear transition-all",
-                                        { "opacity-100": activeHeading === heading.id }
-                                    )}>
-                                    <path d="M-4.4509e-07 32L9.53674e-07 -4.37114e-07L1.42509 4.86267C2.24269 7.65248 5.02062 9.32247 7.37204 11.032C8.97909 12.2003 10 13.9713 10 16.0313C10 18.1074 8.96301 19.9305 7.33412 21.1333C5.00617 22.8523 2.23656 24.5184 1.40771 27.291L-4.4509e-07 32Z"></path>
-                                </svg>
-                            </div>
-                            <span className="text-s">{heading.text}</span>
-                        </div>
+      <div ref={containerRef} className="z-20">
+        {showOverview && (
+          <div className="sticky top-0 left-0 h-fit">
+            <p className="p-5 font-semibold">Overview</p>
+            <div
+              className="w-full h-0.5 bg-transparent z-50 mb-3"
+              ref={progressRef}
+              style={{ "--progress": "0%" } as React.CSSProperties}
+            >
+              <div className="h-full bg-linear-to-r from-palette-lightVibrant via-palette-vibrant to-palette-darkVibrant bg-cover bg-center bg-fixed transition-[width] ease-in-out duration-500 w-(--progress)" />
+            </div>
+            {headingList.map((heading) => (
+              <div
+                key={heading.id}
+                onClick={() => handleHeadingClick(heading.id)}
+                className="cursor-pointer flex items-center gap-2 mb-2 w-fit hover:text-palette-vibrant duration-200 ease-in-out"
+              >
+                <div className="w-5 h-8 flex items-center justify-start">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="32"
+                    viewBox="0 0 10 32"
+                    fill="none"
+                    className={classNames(
+                      "fill-palette-muted opacity-0 duration-200 ease-linear transition-all",
+                      { "opacity-100": activeHeading === heading.id }
                     )}
+                  >
+                    <path d="M-4.4509e-07 32L9.53674e-07 -4.37114e-07L1.42509 4.86267C2.24269 7.65248 5.02062 9.32247 7.37204 11.032C8.97909 12.2003 10 13.9713 10 16.0313C10 18.1074 8.96301 19.9305 7.33412 21.1333C5.00617 22.8523 2.23656 24.5184 1.40771 27.291L-4.4509e-07 32Z"></path>
+                  </svg>
                 </div>
-            )}
-        </div>
-    )
+                <span className="text-s">{heading.text}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
 
 }

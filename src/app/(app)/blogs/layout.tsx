@@ -1,4 +1,8 @@
 import { ContactProvider } from "#/context/ContactSheet.context";
+import {
+  LiquidGlassConfig,
+  LiquidGlassProvider,
+} from "@gracefullight/liquid-glass";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,5 +16,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <ContactProvider>{children}</ContactProvider>;
+  const config: LiquidGlassConfig = {
+    tintOpacity: 0.3,
+    tintColor: "var(--palette-textBackground)",
+    frostBlur: "10px",
+  };
+
+  return (
+    <ContactProvider>
+      <LiquidGlassProvider value={config}>{children}</LiquidGlassProvider>
+    </ContactProvider>
+  );
 }

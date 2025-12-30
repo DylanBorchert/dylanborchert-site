@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Experience, Tag } from "#/payload/payload-types";
 import { ArrowUpRight } from "lucide-react";
@@ -6,6 +6,7 @@ import { format } from "date-fns";
 import IntersectingFadeIn from "#/components/custom/IntersectingFadeIn";
 import { useColorPalette } from "#/context/ColorPalette.context";
 import Link from "next/link";
+import { Card } from "@payloadcms/ui";
 
 export default function ExperienceItem({ item }: { item: Experience }) {
   const tags: Tag[] =
@@ -15,9 +16,9 @@ export default function ExperienceItem({ item }: { item: Experience }) {
     ([] as Tag[]);
 
   return (
-    <div className="group w-full rounded-lg transition ease-in duration-150 shadow-accent relative">
-      <Link href={item["Company Link"]} target="_blank" className="block p-5">
-        <IntersectingFadeIn>
+    <IntersectingFadeIn>
+      <div className="group w-full transition ease-in duration-150 shadow-accent relative">
+        <Link href={item["Company Link"]} target="_blank" className="block p-5">
           <div className="text-muted-foreground flex justify-between items-center text-sm">
             <div className="gap-1 flex">
               <span>{format(new Date(item.startDate), "MMM yyyy")}</span>
@@ -33,7 +34,7 @@ export default function ExperienceItem({ item }: { item: Experience }) {
               className="group-hover:translate-x-2 group-hover:-translate-y-2 transition ease-in-out duration-150"
             />
           </div>
-          <p className="text-xl">
+          <p className="text-xl py-0.5">
             {item["Job Title"]} • {item["Comapany Name"]}
           </p>
           <p className="text-muted-foreground text-md pl-1">
@@ -43,16 +44,16 @@ export default function ExperienceItem({ item }: { item: Experience }) {
             {tags.map((tag: any) => (
               <div
                 key={tag.id}
-                className="w-fit rounded-[8px] border-2 border-palette-vibrant/50"
+                className="w-fit rounded-md border-2 border-foreground/50"
               >
-                <span className="text-palette-vibrant text-sm relative font-semibold w-full px-2">
+                <span className="text-sm relative font-semibold w-full px-2">
                   {tag.name}
                 </span>
               </div>
             ))}
           </div>
-        </IntersectingFadeIn>
-      </Link>
-    </div>
+        </Link>
+      </div>
+    </IntersectingFadeIn>
   );
 }

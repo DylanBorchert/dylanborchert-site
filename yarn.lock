@@ -1442,6 +1442,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.10.tgz#a2a1e3812d14525f725d011a73eceb41fef5bc1c"
   integrity sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==
 
+"@gracefullight/liquid-glass@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@gracefullight/liquid-glass/-/liquid-glass-0.1.0.tgz#629b5a909e2db75783879645994e2f0e2bfc3acc"
+  integrity sha512-+wNIz6MhZVBMhYJmfQPPcuyoVa4RDs6vl+u8XP+ufooN5p67oclE8+wXmkfzu1AYvAhYFtMuDRxWss+Fi+rRlQ==
+
 "@hookform/resolvers@^5.2.2":
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-5.2.2.tgz#5ac16cd89501ca31671e6e9f0f5c5d762a99aa12"
