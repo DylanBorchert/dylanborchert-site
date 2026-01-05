@@ -3,7 +3,6 @@ import { Blog, Project } from "#/payload/payload-types";
 import { LiquidGlassFilters } from "@gracefullight/liquid-glass";
 import Link from "next/link";
 import FadeIn from "react-fade-in";
-import ChangeTheme from "../../ChangeTheme";
 
 export default function BlogHeader({ post }: { post: Blog | Project }) {
   const formatter = new Intl.DateTimeFormat("en-CA", {
@@ -14,8 +13,8 @@ export default function BlogHeader({ post }: { post: Blog | Project }) {
   });
 
   return (
-    <div className="w-full max-w-[calc(100dvh*(5/4))] mx-auto z-10 md:h-[50dvh] h-dvh flex flex-col">
-      <div className="flex p-3 items-center gap-3 justify-between my-3">
+    <div className="w-full max-w-dvh mx-auto z-10 md:h-[50dvh] h-dvh flex flex-col">
+      <div className="flex p-3 items-center gap-3 justify-between m-3">
         <p className="flex-nowrap font-semibold sm:text-base">
           <Link href="/" className="cursor-pointer text-md">
             DYLANBORCHERT

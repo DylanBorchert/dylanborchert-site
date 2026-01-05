@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* View Transition API styles for theme toggle */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
 .debug-s {
   box-shadow: inset 0px 0px 1px 1px red;
 }

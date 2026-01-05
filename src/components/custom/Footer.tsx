@@ -3,7 +3,7 @@
 import { useContactSheet } from "#/context/ContactSheet.context";
 import { ArrowRight } from "lucide-react"
 import Link from "next/link";
-import ChangeTheme from "./ChangeTheme";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Footer(props: any) {
   const { openSheet } = useContactSheet();
@@ -48,7 +48,7 @@ export default function Footer(props: any) {
               </svg>
             </Link>
           </div>
-          <ChangeTheme fillType="dark:fill-palette-lightMuted fill-palette-darkMuted" />
+          <ThemeToggle className="dark:fill-palette-lightMuted fill-palette-darkMuted" />
         </div>
         <div className="flex justify-between items-center">
           <div className="font-thin text-left text-xs">

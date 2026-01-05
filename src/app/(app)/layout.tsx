@@ -25,7 +25,7 @@ export default async function RootLayout({
         <ThemeProvider
           enableSystem={true}
           attribute="class"
-          disableTransitionOnChange={false}
+          disableTransitionOnChange={true}
           defaultTheme="system"
         >
           <ColorPaletteProvider>

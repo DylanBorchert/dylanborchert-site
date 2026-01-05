@@ -2,7 +2,6 @@
 import { AuroraBackground } from "#/components/ui/aurora-background";
 import FadeIn from "react-fade-in";
 import { AutoTextSize } from "auto-text-size";
-import ChangeTheme from "#/components/custom/ChangeTheme";
 
 
 export default function Hero() {
