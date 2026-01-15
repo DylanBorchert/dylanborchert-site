@@ -13,12 +13,12 @@ const Post = ({ children }: PropsWithChildren) => {
 const PostContent = ({ post }: { post: Blog | Project }) => {
 
   return (
-    <section className="pt-5 grid grid-cols-[1fr_auto_1fr] debug-s h-full">
+    <section className=" grid grid-cols-[1fr_auto_1fr]">
       <BackgroundBeams />
       <PostOverview post={post} />
       <PostBody post={post} />
     </section>
-  )
+  );
 }
 
 Post.Content = PostContent

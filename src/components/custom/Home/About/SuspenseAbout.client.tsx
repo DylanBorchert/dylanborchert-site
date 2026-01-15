@@ -3,7 +3,7 @@
 import { AutoTextSize } from 'auto-text-size'
 
 import Typewriter from 'typewriter-effect';
-import IntersectingFadeIn from "../../../IntersectingFadeIn";
+import IntersectingFadeIn from "../../IntersectingFadeIn";
 import { useColorPalette } from '#/context/ColorPalette.context';
 
 export default function SuspenseAbout({ home }: any) {

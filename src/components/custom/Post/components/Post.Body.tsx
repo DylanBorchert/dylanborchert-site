@@ -4,10 +4,8 @@ import LexicalRenderer from "../../Lexical/LexicalRenderer";
 
 export default function PostContent({ post }: { post: Blog | Project }) {
     return (
-        <div className="px-10 lexical max-w-[calc(100dvh*(5/4))] debug-s w-full">
-            <LexicalRenderer
-                content={post}
-            />
-        </div>
-    )
+      <div className="px-10 lexical max-w-dvh w-full z-10">
+        <LexicalRenderer content={post} />
+      </div>
+    );
 }

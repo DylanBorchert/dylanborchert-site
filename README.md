@@ -5,7 +5,7 @@ Working on a updated portfolio site
 ## Tech Used
 
 -   Nextjs 15
--   tailwind css
+-   tailwind css 4.0
 -   Payload cms
 -   mongodb
 
@@ -14,7 +14,8 @@ Working on a updated portfolio site
 -   https://fonts.google.com/specimen/Space+Grotesk
 -   https://ui.shadcn.com/
 -   https://ui.aceternity.com/
--   https://www.shadergradient.co/
+-   https://magicui.design/
+-   https://basicappleguy.com/
 
 ## Dribble Inspo
 

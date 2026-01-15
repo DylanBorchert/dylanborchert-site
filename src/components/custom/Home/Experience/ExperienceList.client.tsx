@@ -2,7 +2,7 @@
 
 import { AutoTextSize } from "auto-text-size";
 import { useEffect, useState } from "react";
-import IntersectingFadeIn from "#/components/IntersectingFadeIn";
+import IntersectingFadeIn from "#/components/custom/IntersectingFadeIn";
 import ExperienceItem from "./ExperienceItem.client";
 import { ArrowUpRight } from "lucide-react";
 import { Experience } from "#/payload/payload-types";

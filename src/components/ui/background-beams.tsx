@@ -66,8 +66,8 @@ export const BackgroundBeams = React.memo(
       <div
         data-theme={displayedTheme}
         className={cn(
-          "absolute inset-0 flex h-full w-full items-center justify-center mask-no-repeat mask-size-[40px] bg-background",
-          className,
+          "fixed inset-0 flex h-full w-full items-center justify-center mask-no-repeat mask-size-[40px] bg-background",
+          className
         )}
       >
         <svg
@@ -103,9 +103,19 @@ export const BackgroundBeams = React.memo(
               gradientUnits="userSpaceOnUse"
               gradientTransform="translate(352 34) rotate(90) scale(555 1560.62)"
             >
-              <stop offset="0.0666667" stopColor={displayedTheme === "dark" ? "white" : "black"}></stop>
-              <stop offset="0.243243" stopColor={displayedTheme === "dark" ? "white" : "black"}></stop>
-              <stop offset="0.43594" stopColor={displayedTheme === "dark" ? "white" : "black"} stopOpacity="0.2"></stop>
+              <stop
+                offset="0.0666667"
+                stopColor={displayedTheme === "dark" ? "white" : "black"}
+              ></stop>
+              <stop
+                offset="0.243243"
+                stopColor={displayedTheme === "dark" ? "white" : "black"}
+              ></stop>
+              <stop
+                offset="0.43594"
+                stopColor={displayedTheme === "dark" ? "white" : "black"}
+                stopOpacity="0.2"
+              ></stop>
             </radialGradient>
           </defs>
         </svg>

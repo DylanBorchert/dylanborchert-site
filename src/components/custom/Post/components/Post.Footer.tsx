@@ -12,14 +12,17 @@ export default function PostFooter({ post }: { post: Blog | Project }) {
     const timeAgo = new TimeAgo('en-US')
 
     return (
-        <div className=" w-full px-5 max-w-[calc(100dvh*(5/4))] mx-auto">
-            <div className="px-5 flex items-center justify-between">
-                <p className="dark:text-palette-lightMuted text-palette-darkMuted font-mono text-sm">
-                    {`Last updated ${timeAgo.format(new Date(post.updatedAt))}`}
-                </p>
-                <Rss className="dark:text-palette-lightMuted/50 text-palette-darkMuted/50 hover:dark:text-palette-lightMuted hover:text-palette-darkMuted h-4 w-4 transition delay-200 ease-in cursor-pointer" onClick={() => alert('rss feed coming soon')} />
-            </div>
-            <Footer />
+      <div className=" w-full px-5 max-w-dvh mx-auto z-10">
+        <div className="px-5 flex items-center justify-between pb-1">
+          <p className="dark:text-palette-lightMuted text-palette-darkMuted font-mono text-sm">
+            {`Last updated ${timeAgo.format(new Date(post.updatedAt))}`}
+          </p>
+          {/* <Rss
+            className="dark:text-palette-lightMuted/50 text-palette-darkMuted/50 hover:dark:text-palette-lightMuted hover:text-palette-darkMuted h-4 w-4 transition delay-200 ease-in cursor-pointer"
+            onClick={() => alert("rss feed coming soon")}
+          /> */}
         </div>
-    )
+        <Footer />
+      </div>
+    );
 }
