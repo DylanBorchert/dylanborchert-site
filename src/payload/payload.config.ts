@@ -15,6 +15,7 @@ import { Blogs } from "./collections/Blogs";
 import { Projects } from "./collections/Projects";
 import { Experience } from "./collections/Experience";
 import Home from "./globals/Home";
+import StravaTokens from "./globals/StravaTokens";
 import { Tags } from "./collections/Tags";
 import { CodeBlock } from "./blocks/CodeBlock";
 
@@ -47,7 +48,7 @@ export default buildConfig({
     apiKey: process.env.RESEND_API_KEY || "",
   }),
   collections: [Users, Media, Blogs, Projects, Experience, Tags],
-  globals: [Home],
+  globals: [Home, StravaTokens],
   editor: lexicalEditor({
     features: ({ defaultFeatures, rootFeatures }) => [
       ...defaultFeatures,

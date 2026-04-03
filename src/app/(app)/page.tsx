@@ -1,13 +1,13 @@
 "use server";
 import Hero from "#/components/custom/Home/Hero/Hero";
-import About from "#/components/custom/Home/About/About.client";
 import Footer from "#/components/custom/Footer";
 import UpScrollButton from "#/components/custom/UpScrollButton";
 import ExperienceServer from "#/components/custom/Home/Experience/Experience.server";
 import AboutServer from "#/components/custom/Home/About/About.server";
+import MyStatsServer from "#/components/custom/Home/About/MyStats.server";
 import { ContactClient } from "#/components/custom/Contact";
 import { cn } from "#/lib/utils";
-import { Projects } from "#/components/custom/Home/Projects/Projects.client";
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -19,11 +19,11 @@ export default async function Home() {
       </Hero>
       <section
         className={cn(
-          "mx-auto max-w-[calc(100dvh*(5/4))]",
+          "mx-auto max-w-[calc(100dvh*(5/4))] w-full",
           "h-full relative inset-0",
           "[background-size:20px_20px]",
           "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-          "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
+          "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]",
         )}
       >
         <section className="h-full relative inset-0">
@@ -38,7 +38,12 @@ export default async function Home() {
         </section>
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_10%,var(--background))] dark:bg-background"></div>
       </section>
-      <Projects />
+      {/* <Projects /> */}
+      <section className="mx-auto max-w-[calc(100dvh*(5/4))] w-full">
+        <Suspense>
+          <MyStatsServer />
+        </Suspense>
+      </section>
       <Footer />
       <UpScrollButton />
       <ContactClient />
