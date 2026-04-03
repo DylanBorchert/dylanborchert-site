@@ -7,7 +7,6 @@ import ExperienceItem from "./ExperienceItem.client";
 import { ArrowUpRight } from "lucide-react";
 import { Experience } from "#/payload/payload-types";
 import useOrigin from "#/hooks/getOrigin";
-import { useColorPalette } from "#/context/ColorPalette.context";
 import Link from "next/link";
 
 export default function ExperienceClient({ experience, resumeUrl }: { experience: any, resumeUrl: string }) {
@@ -20,7 +19,7 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
 
   return (
     <div className="h-fit relative md:flex py-5" id="experience">
-      <div className="max-w-1/2 md:w-1/2 w-full sticky md:top-5 h-fit">
+      <div className="md:max-w-1/2 md:w-1/2 w-full sticky md:top-5 h-fit">
         <AutoTextSize
           as="span"
           maxFontSizePx={1000}
@@ -29,7 +28,7 @@ export default function ExperienceClient({ experience, resumeUrl }: { experience
           My Experience.
         </AutoTextSize>
       </div>
-      <div className="md:w-1/2 w-full md:pl-3 md:pt-0  pt-5 flex flex-col gap-5">
+      <div className="md:w-1/2 w-full md:pl-3 md:pt-0 pt-5 flex flex-col gap-5">
         {experienceItems?.map((item: Experience) => (
           <ExperienceItem key={item.id} item={item} />
         ))}
