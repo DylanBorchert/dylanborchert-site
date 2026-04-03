@@ -68,7 +68,6 @@
     "graphql": "^16.8.1",
     "html-react-parser": "^5.1.18",
     "javascript-time-ago": "^2.5.11",
-    "lodash": "^4.17.23",
     "lucide-react": "^0.556.0",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.23.26",

@@ -1,7 +1,6 @@
 'use client'
 import { Blog, Project } from "#/payload/payload-types";
 import classNames from "classnames";
-import { debounce } from "lodash";
 import { useEffect, useMemo, useRef, useState } from "react";
 import slugify from "slugify";
 
@@ -56,7 +55,10 @@ export default function PostContent({ post }: { post: Blog | Project }) {
 
     useEffect(() => {
         const headings = document.querySelectorAll(".post-heading");
-        const handleScroll = debounce(() => {
+        let timer: ReturnType<typeof setTimeout>;
+        const handleScroll = () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
             const scrollTop = window.scrollY;
             const docHeight = document.body.scrollHeight - window.innerHeight;
             const scrolled = (scrollTop / docHeight) * 100;
@@ -65,23 +67,26 @@ export default function PostContent({ post }: { post: Blog | Project }) {
 
             let foundActive = false;
             headings.forEach((heading) => {
-                const offsetTop = (heading as HTMLElement).offsetTop - 75;
-                if (scrollTop >= offsetTop) {
-                    setActiveHeading(heading.id);
-                    foundActive = true;
-                }
+              const offsetTop = (heading as HTMLElement).offsetTop - 75;
+              if (scrollTop >= offsetTop) {
+                setActiveHeading(heading.id);
+                foundActive = true;
+              }
             });
 
             if (!foundActive && headings.length > 0) {
-                setActiveHeading(headings[0].id);
+              setActiveHeading(headings[0].id);
             }
-
-        }, 20);
+          }, 20);
+        };
 
         handleScroll();
 
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+          clearTimeout(timer);
+          window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     return (
