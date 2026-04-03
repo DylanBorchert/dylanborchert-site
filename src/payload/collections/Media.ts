@@ -8,7 +8,7 @@ export const Media: CollectionConfig = {
 	},
 	admin: {
 		useAsTitle: "alt",
-		defaultColumns: ["file-name", "alt"],
+		defaultColumns: ["_thumbnail", "file-name", "alt", "colorPalette"],
 	},
 	fields: [
 		{
@@ -25,8 +25,11 @@ export const Media: CollectionConfig = {
 					required: false,
 					defaultValue: {},
 					admin: {
-						hidden: true,
 						readOnly: true,
+						components: {
+							Field: "@/payload/components/colorPalette/ColorPaletteField",
+							Cell: "@/payload/components/colorPalette/ColorPaletteCell",
+						},
 					},
 				},
 			],
