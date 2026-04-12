@@ -21,13 +21,13 @@ export interface CoffeeStats {
 
 class CoffeeHelper extends ApiHelper<CoffeeStats> {
   constructor() {
-    super({ devTTL: 30_000, prodTTL: 300_000 });
+    super({ devTTL: 30_000, prodTTL: Number(process.env.COFFEE_TTL_MS ?? 60_000) });
   }
 
   protected async fetch(): Promise<CoffeeStats> {
     const [statsRes, latestRes] = await Promise.all([
-      fetch(`${COFFEE_API}/shots/stats`, { next: { revalidate: 300 } }),
-      fetch(`${COFFEE_API}/shots/latest`, { next: { revalidate: 300 } }),
+      fetch(`${COFFEE_API}/shots/stats`, { next: { revalidate: 60 } }),
+      fetch(`${COFFEE_API}/shots/latest`, { next: { revalidate: 60 } }),
     ]);
 
     if (!statsRes.ok || !latestRes.ok) {

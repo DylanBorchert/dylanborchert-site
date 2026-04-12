@@ -24,7 +24,7 @@ function getLevel(count: number, max: number): number {
 
 class GitHubHelper extends ApiHelper<GitHubStats> {
   constructor() {
-    super({ devTTL: 60_000, prodTTL: 1_800_000 });
+    super({ devTTL: 60_000, prodTTL: Number(process.env.GITHUB_TTL_MS ?? 1_800_000) });
   }
 
   protected async fetch(): Promise<GitHubStats> {

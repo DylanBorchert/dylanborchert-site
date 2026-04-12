@@ -131,7 +131,7 @@ function computePeriodStats(activities: any[]): CyclingPeriodStats {
 
 class StravaHelper extends ApiHelper<CyclingStats> {
   constructor() {
-    super({ devTTL: 60_000, prodTTL: 1_800_000 });
+    super({ devTTL: 30_000, prodTTL: Number(process.env.STRAVA_TTL_MS ?? 1_800_000) });
   }
 
   protected async fetch(): Promise<CyclingStats> {
