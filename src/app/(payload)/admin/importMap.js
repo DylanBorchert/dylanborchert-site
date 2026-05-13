@@ -28,6 +28,7 @@ import { Code as Code_f138713dbe3548c76b6f4ff7406cf268 } from '@/payload/compone
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
+/** @type import('payload').ImportMap */
 export const importMap = {
   "@/payload/components/colorPalette/ColorPaletteCell#default": default_1e5b320278b7a181cace046ceda6c769,
   "@/payload/components/colorPalette/ColorPaletteField#default": default_bc0d7a2b2fd090485685f489b7948758,
